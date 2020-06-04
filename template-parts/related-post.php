@@ -25,8 +25,8 @@ if( $cred_cred_enable_related_post && is_single() && 'post' === get_post_type() 
                     <h3 class="related-post-heading"><?php _e( 'Related Posts', 'credence' ); ?></h3>
                 </div>
                 <?php
-                foreach( $related as $post ) :
-                    setup_postdata($post); 
+                foreach( $related as $cred_each_related_post ) :
+                    setup_postdata($cred_each_related_post); 
                 ?>
                     <div class="cred-single-related-post col-lg-4">
                         <?php if( has_post_thumbnail() ) : ?>

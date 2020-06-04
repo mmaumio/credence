@@ -199,7 +199,7 @@ path {
 
 .skip-link {
 	left: -9999rem;
-	top: 2.5rem;
+	top: 32px;
 	z-index: 999999999;
 	text-decoration: none;
 }
@@ -1840,9 +1840,6 @@ button.search-untoggle {
 	cursor: pointer;
 }
 
-.search-modal button.search-untoggle:focus {
-	outline: 0;
-}
 
 .search-untoggle img {
 	height: 1.5rem;

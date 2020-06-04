@@ -1,6 +1,52 @@
 <?php
 
 /**
+ * Checkbox sanitization callback example.
+ * 
+ * Sanitization callback for 'checkbox' type controls. This callback sanitizes `$checked`
+ * as a boolean value, either TRUE or FALSE.
+ *
+ * @param bool $checked Whether the checkbox is checked.
+ * @return bool Whether the checkbox is checked.
+ */
+if ( ! function_exists( 'cred_sanitize_checkbox' ) ) :
+	function cred_sanitize_checkbox( $checked ) {
+		// Boolean check.
+		return ( ( isset( $checked ) && true == $checked ) ? true : false );
+	}
+endif;
+
+/**
+ * Select sanitization callback example.
+ *
+ * - Sanitization: select
+ * - Control: select, radio
+ * 
+ * Sanitization callback for 'select' and 'radio' type controls. This callback sanitizes `$input`
+ * as a slug, and then validates `$input` against the choices defined for the control.
+ * 
+ * @see sanitize_key()               https://developer.wordpress.org/reference/functions/sanitize_key/
+ * @see $wp_customize->get_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/get_control/
+ *
+ * @param string               $input   Slug to sanitize.
+ * @param WP_Customize_Setting $setting Setting instance.
+ * @return string Sanitized slug if it is a valid choice; otherwise, the setting default.
+ */
+if ( ! function_exists( 'cred_sanitize_select' ) ) :
+	function cred_sanitize_select( $input, $setting ) {
+		
+		// Ensure input is a slug.
+		$input = sanitize_key( $input );
+		
+		// Get list of choices from the control associated with the setting.
+		$choices = $setting->manager->get_control( $setting->id )->choices;
+		
+		// If the input is a valid key, return it; otherwise, return the default.
+		return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
+	}
+endif;
+
+/**
  * Return selected homepage sidebar name.
  *
  * @return string
@@ -68,8 +114,8 @@ function cred_page_custom_options(){
 
   	$title_status              = get_post_meta( $post->ID, 'cred_disable_title_status', true );
   	$featured_image_status     = get_post_meta( $post->ID, 'cred_disable_featured_image_status', true );
-	$title_is_checked          = 'yes' === $title_status ? 'checked="checked"' : '';
-	$image_is_checked          = 'yes' === $featured_image_status ? 'checked="checked"' : '';
+	$title_is_checked          = 1 == $title_status ? 'checked="checked"' : '';
+	$image_is_checked          = 1 == $featured_image_status ? 'checked="checked"' : '';
   	?>
 
   	<div class="cred-page-settings-option-wrap">
@@ -87,7 +133,7 @@ function cred_page_custom_options(){
 		    <label for="cred_enable_transparent_header_status" class="post-attributes-label-wrapper"><strong><?php _e( 'Transparent Header', 'credence' ); ?></strong></label>
 		    <select name="cred_enable_transparent_header_status" id="cred_enable_transparent_header_status">
 				<option value="default" <?php selected( $transparent_header_enable, 'default' ); ?>> <?php _e( 'Customizer Setting', 'credence' ); ?></option>
-				<option value="transparent_header" <?php selected( $transparent_header_enable, 'sidebar_left' ); ?>> <?php _e( 'Enable Transparency', 'credence' ); ?></option>
+				<option value="transparent_header" <?php selected( $transparent_header_enable, 'transparent_header' ); ?>> <?php _e( 'Enable Transparency', 'credence' ); ?></option>
 		    </select>
 		</div>
 
@@ -95,15 +141,15 @@ function cred_page_custom_options(){
 	  		<label><strong><?php _e( 'Disable Sections', 'credence' ); ?></strong></label>
 		    
 		    <div class="cred-page-title-display-option-wrap">
-			    <label for="cred_disable_title" class="post-attributes-label-wrapper">
-			    	<input type="checkbox" id="cred_disable_title" name="cred_disable_title_status" value="yes" <?php echo esc_attr( $title_is_checked ); ?> />
+			    <label for="cred_disable_title_status" class="post-attributes-label-wrapper">
+			    	<input type="checkbox" id="cred_disable_title_status" name="cred_disable_title_status" value="yes" <?php echo esc_attr( $title_is_checked ); ?> />
 			    	<?php _e( 'Disable Title', 'credence' ); ?>
 			    </label>
 		    </div>
 
 		    <div class="cred-page-feature-image-display-option-wrap">
-			    <label for="cred_disable_featured_image" class="post-attributes-label-wrapper">
-			    	<input type="checkbox" id="cred_disable_featured_image" name="cred_disable_featured_image_status" value="yes" <?php echo esc_attr( $image_is_checked ); ?> />
+			    <label for="cred_disable_featured_image_status" class="post-attributes-label-wrapper">
+			    	<input type="checkbox" id="cred_disable_featured_image_status" name="cred_disable_featured_image_status" value="yes" <?php echo esc_attr( $image_is_checked ); ?> />
 			    	<?php _e( 'Disable Featured Image', 'credence' ); ?>
 			    </label>
 		    </div>
@@ -130,14 +176,21 @@ function cred_save_post_and_page_details() {
 	if( isset( $_POST['cred_sidebar_status'] ) ) :
   		update_post_meta( $post->ID, 'cred_sidebar_status', $_POST['cred_sidebar_status'] );
 	endif;
-	if( isset( $_POST['cred_disable_title_status'] ) ) :
-  		update_post_meta( $post->ID, 'cred_disable_title_status', $_POST['cred_disable_title_status'] );
-	endif;
-	if( isset( $_POST['cred_disable_featured_image_status'] ) ) :
-  		update_post_meta( $post->ID, 'cred_disable_featured_image_status', $_POST['cred_disable_featured_image_status'] );
-	endif;
+
 	if( isset( $_POST['cred_enable_transparent_header_status'] ) ) :
   		update_post_meta( $post->ID, 'cred_enable_transparent_header_status', $_POST['cred_enable_transparent_header_status'] );
+	endif;
+
+	if( isset( $_POST['cred_disable_title_status'] ) ) :
+	    update_post_meta( $post->ID, 'cred_disable_title_status', cred_sanitize_checkbox( $_POST['cred_disable_title_status'] ) );
+	else :
+	    delete_post_meta( $post->ID, 'cred_disable_title_status' );
+	endif;
+
+	if( isset( $_POST['cred_disable_featured_image_status'] ) ) :
+	    update_post_meta( $post->ID, 'cred_disable_featured_image_status', cred_sanitize_checkbox( $_POST['cred_disable_featured_image_status'] ) );
+	else :
+	    delete_post_meta( $post->ID, 'cred_disable_featured_image_status' );
 	endif;
 }
 
@@ -213,7 +266,7 @@ if ( ! class_exists( 'Cred_WP_Breadcrumb' ) ) :
 				'home' 			=> esc_html__( 'Home', 'credence' ),
 				'search' 		=> array(
 					'singular' => esc_html__( 'Search results for %s', 'credence' ),
-					'plural'   => esc_html__( '%s Search results for %s', 'credence' ),
+					'plural'   => esc_html__( '%1$s Search results for %1$s', 'credence' ),
 				),
 				'paged'	 	=> esc_html__( 'Page %d', 'credence' ),
 				'404_error' => esc_html__( '404 Nothing Found', 'credence' ),
@@ -512,4 +565,8 @@ if( ! function_exists( 'cred_breadcrumb_args' ) ) :
 		return $args;
 	}
 endif;
+
+
+
+
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Header file for the Credence WordPress default theme.
+ * Header file for the Credence.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *

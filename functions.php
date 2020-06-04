@@ -106,7 +106,7 @@ function cred_theme_support() {
 	 * If you're building a theme based on Credence, use a find and replace
 	 * to change 'credence' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'credence' );
+	load_theme_textdomain( 'credence', get_template_directory() . '/languages' );
 
 	// Add support for full and wide align images.
 	add_theme_support( 'align-wide' );
@@ -197,7 +197,7 @@ add_action( 'wp_enqueue_scripts', 'cred_register_styles' );
  */
 function cred_admin_enqueue_styles() {
 	$theme_version = wp_get_theme()->get( 'Version' );
-	wp_enqueue_style( 'credence-admin-style', get_template_directory_uri() . '/assets/css/credence-admin.min.css', null, $theme_version );
+	wp_enqueue_style( 'credence-admin-style', get_template_directory_uri() . '/assets/css/credence-admin.css', null, $theme_version );
 }
 add_action( 'admin_enqueue_scripts', 'cred_admin_enqueue_styles' );
 
@@ -636,6 +636,11 @@ function cred_get_customizer_color_vars() {
  */
 if ( ! function_exists( 'cred_excerpt_more' ) ) :
 	function cred_excerpt_more( $more ) {
+		$more = '';
+		if ( is_admin() ) :
+			return $more;
+		endif;
+
 	    if ( ! is_single() ) :
 	        $more = sprintf( '<a class="cred-read-more" href="%1$s">%2$s</a>',
 	            get_permalink( get_the_ID() ),
@@ -643,7 +648,7 @@ if ( ! function_exists( 'cred_excerpt_more' ) ) :
 	        );
 	    endif;
 	 
-	    return $more;
+	    return wp_kses_post( $more );
 	}
 endif;
 add_filter( 'excerpt_more', 'cred_excerpt_more' );

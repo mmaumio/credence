@@ -47,17 +47,16 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
                     </label>
                 <?php
             }
-        
+
             public function get_google_fonts() {
-                if ( get_transient( 'mytheme_google_font_list' ) ) :
-                    $content = get_transient('mytheme_google_font_list');
+                if ( get_transient( 'credence_google_font_list' ) ) :
+                    $content = get_transient('credence_google_font_list');
                 else :
                     $googleApi = 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=AIzaSyDcAjGVgfOIeaMl5Ebppm2k65nmhKiXvu4';
                     $fontContent = wp_remote_get( $googleApi, array('sslverify'   => false) );
                     $content = json_decode($fontContent['body'], true);
-                    set_transient( 'mytheme_google_font_list', $content, 0 );
+                    set_transient( 'credence_google_font_list', $content, 0 );
                 endif;
-
                 return $content['items'];
             }
 

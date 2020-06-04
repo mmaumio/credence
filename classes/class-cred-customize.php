@@ -1527,7 +1527,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			return (int) $value;
 		}
 
-		public static function sanitize_textarea_field( $str ) {
+		public static function cred_sanitize_textarea_field( $str ) {
 			$filtered = sanitize_text_fields( $str, true );
 		 
 			/**
@@ -1538,7 +1538,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			 * @param string $filtered The sanitized string.
 			 * @param string $str      The string prior to being sanitized.
 			 */
-			return apply_filters( 'sanitize_textarea_field', $filtered, $str );
+			return apply_filters( 'cred_sanitize_textarea_field', $filtered, $str );
 		}
 
 		/**
