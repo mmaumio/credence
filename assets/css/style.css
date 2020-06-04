@@ -1347,11 +1347,10 @@ ul.primary-menu {
 }
 
 .primary-menu li a {
-	font-size: 16px;
+	font-size: 15px;
 	position: relative;
 	padding: 5px 0;
 	color: #707070;
-	font-family: Arial;
 	font-weight: 400;
 }
 
@@ -2053,14 +2052,14 @@ h2.entry-title {
 	color: #707070;
 	display: flex;
 	flex-wrap: wrap;
-	font-size: 16px;
+	font-size: 14px;
 	list-style: none;
 	margin: -1rem 0 0 -2rem;
 }
 
 .post-meta li {
 	flex-shrink: 0;
-	margin: 1rem 0 0 2rem;
+	margin: 1.4rem 0 0 2rem;
 	max-width: calc(100% - 2rem);
 }
 
@@ -2096,7 +2095,7 @@ h2.entry-title {
 /* Featured Media ---------------------------- */
 
 .featured-media {
-	margin-top: 5rem;
+	margin-top: 4rem;
 	position: relative;
 }
 
@@ -2148,6 +2147,7 @@ h2.entry-title {
 
 .post-inner {
 	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 /* Post Footer ------------------------------- */
@@ -2771,7 +2771,7 @@ figure.wp-block-table.is-style-stripes {
 
 .entry-content {
 	line-height: 1.7;
-	font-size: 18px;
+	font-size: 15px;
 }
 .entry-content > *:first-child {
 	margin-top: 0;
@@ -2810,8 +2810,8 @@ figure.wp-block-table.is-style-stripes {
 
 .entry-content p,
 .entry-content li {
-	line-height: 1.6;
-	color: #707070;
+	line-height: 1.8;
+	color: #444444;
 }
 
 .entry-content ul ul,
@@ -3465,7 +3465,7 @@ div.comment:first-of-type {
 	font-weight: 400;
 	text-decoration: none;
 	color: #707070;
-	font-size: 16px;
+	font-size: 15px;
 }
 
 .widget_archive a:focus,
@@ -4303,7 +4303,7 @@ body.footer-menu-added footer .footer-inner {
 	}
 
 	.post-meta {
-		font-size: 16px;
+		font-size: 15px;
 		margin: -1.4rem 0 0 -3rem;
 	}
 
@@ -4313,7 +4313,7 @@ body.footer-menu-added footer .footer-inner {
 	}
 
 	.featured-media {
-		margin-top: 6rem;
+		margin-top: 4rem;
 	}
 
 	/* POST FOOTER */
@@ -4544,12 +4544,12 @@ body.footer-menu-added footer .footer-inner {
 	/* Entry Content ------------------------- */
 
 	.entry-content {
-		font-size: 18px;
+		font-size: 15px;
 	}
 
 	.entry-content p,
 	.entry-content li {
-		line-height: 1.6;
+		line-height: 1.8;
 	}
 
 
@@ -5526,17 +5526,17 @@ body.footer-menu-added footer .footer-inner {
 	list-style: none;
 	display: inline-block;
 	padding: 0 5px;
-	font-size: 13px;
-	line-height: 13px;
+	font-size: 14px;
+	line-height: 14px;
 	font-weight: 400;
-	color: #999999;
+	color: #707070;
 }
 .cred-breadcrumb-wrapper ul i ,
 .cred-breadcrumb-wrapper ul li a {
-	font-size: 16px;
-	line-height: 16px;
+	font-size: 14px;
+	line-height: 14px;
 	font-weight: 400;
-	color: #999999;
+	color: #707070;
 }
 .cred-breadcrumb-wrapper ul li:first-child {
 	padding-left: 0;
