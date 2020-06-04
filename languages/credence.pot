@@ -1,0 +1,551 @@
+# Copyright (C) 2020 Credence
+# This file is distributed under the same license as the Credence package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Credence\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 404.php:15
+msgid "Page Not Found"
+msgstr ""
+
+#: 404.php:17
+msgid "The page you were looking for could not be found. It might have been removed, renamed, or did not exist in the first place."
+msgstr ""
+
+#: 404.php:22
+msgid "404 not found"
+msgstr ""
+
+#: comments.php:33
+msgid "Leave a comment"
+msgstr ""
+
+#: comments.php:73
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:74
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:87
+msgid "Comments"
+msgstr ""
+
+#: footer.php:45, classes/class-cred-customize.php:1357
+msgid "Credence Powered by WordPress"
+msgstr ""
+
+#. translators: %s: HTML character for up arrow
+#. translators: %s: HTML character for up arrow
+#: footer.php:57, footer.php:63
+msgid "%s"
+msgstr ""
+
+#: functions.php:264
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:265
+msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:344
+msgid "Skip to the content"
+msgstr ""
+
+#: functions.php:369, classes/class-cred-customize.php:754, inc/helper.php:77
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:371
+msgid "Widgets in this area will be displayed in the sidebar."
+msgstr ""
+
+#: functions.php:381
+msgid "Footer One"
+msgstr ""
+
+#: functions.php:383
+msgid "Widgets in this area will be displayed in the first column in the footer."
+msgstr ""
+
+#: functions.php:393
+msgid "Footer Two"
+msgstr ""
+
+#: functions.php:395
+msgid "Widgets in this area will be displayed in the second column in the footer."
+msgstr ""
+
+#: functions.php:405
+msgid "Footer Three"
+msgstr ""
+
+#: functions.php:407
+msgid "Widgets in this area will be displayed in the third column in the footer."
+msgstr ""
+
+#: functions.php:417
+msgid "Footer Four"
+msgstr ""
+
+#: functions.php:419
+msgid "Widgets in this area will be displayed in the fourth column in the footer."
+msgstr ""
+
+#: functions.php:642
+msgid "Read More"
+msgstr ""
+
+#: header.php:80
+msgid "Horizontal"
+msgstr ""
+
+#: index.php:44
+msgid "Search:"
+msgstr ""
+
+#. translators: %s: Number of search results
+#: index.php:51
+msgid "We found %s result for your search."
+msgid_plural "We found %s results for your search."
+msgstr[0] ""
+msgstr[1] ""
+
+#: searchform.php:24, template-parts/modal-search.php:19
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:26
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr ""
+
+#: searchform.php:28
+msgctxt "submit button"
+msgid "Search"
+msgstr ""
+
+#: classes/class-cred-customize.php:70
+msgid "Site Identity"
+msgstr ""
+
+#: classes/class-cred-customize.php:90
+msgid "Retina logo"
+msgstr ""
+
+#: classes/class-cred-customize.php:91
+msgid "Scales the logo to half its uploaded size, making it sharp on high-res screens."
+msgstr ""
+
+#: classes/class-cred-customize.php:110
+msgid "Show Tagline"
+msgstr ""
+
+#: classes/class-cred-customize.php:124, classes/class-cred-customize.php:154, classes/class-cred-customize.php:184, classes/class-cred-customize.php:238, classes/class-cred-customize.php:290, classes/class-cred-customize.php:342, classes/class-cred-customize.php:394, classes/class-cred-customize.php:446
+msgid "Typography"
+msgstr ""
+
+#: classes/class-cred-customize.php:142
+msgid "Header Menu Font"
+msgstr ""
+
+#: classes/class-cred-customize.php:172
+msgid "Heading 1"
+msgstr ""
+
+#: classes/class-cred-customize.php:201, classes/class-cred-customize.php:255, classes/class-cred-customize.php:307, classes/class-cred-customize.php:359, classes/class-cred-customize.php:411, classes/class-cred-customize.php:463
+msgid "Font Size ( px )"
+msgstr ""
+
+#: classes/class-cred-customize.php:226
+msgid "Heading 2"
+msgstr ""
+
+#: classes/class-cred-customize.php:278
+msgid "Heading 3"
+msgstr ""
+
+#: classes/class-cred-customize.php:330
+msgid "Heading 4"
+msgstr ""
+
+#: classes/class-cred-customize.php:382
+msgid "Heading 5"
+msgstr ""
+
+#: classes/class-cred-customize.php:434
+msgid "Heading 6"
+msgstr ""
+
+#: classes/class-cred-customize.php:480
+msgid "Layout"
+msgstr ""
+
+#: classes/class-cred-customize.php:498, classes/class-cred-customize.php:523
+msgid "Site Width"
+msgstr ""
+
+#: classes/class-cred-customize.php:501, classes/class-cred-customize.php:526
+msgid "Measurement is in pixel."
+msgstr ""
+
+#: classes/class-cred-customize.php:548
+msgid "Content Width"
+msgstr ""
+
+#: classes/class-cred-customize.php:551
+msgid "Measurement is in ( % )"
+msgstr ""
+
+#: classes/class-cred-customize.php:573
+msgid "Select Sidebar layout"
+msgstr ""
+
+#: classes/class-cred-customize.php:578, inc/helper.php:80
+msgid "Left Sidebar"
+msgstr ""
+
+#: classes/class-cred-customize.php:582, inc/helper.php:81
+msgid "Right Sidebar"
+msgstr ""
+
+#: classes/class-cred-customize.php:586
+msgid "Sidebar None"
+msgstr ""
+
+#: classes/class-cred-customize.php:599
+msgid "Blog"
+msgstr ""
+
+#: classes/class-cred-customize.php:620
+msgid "Enable Author Bio"
+msgstr ""
+
+#: classes/class-cred-customize.php:636
+msgid "Enable Related Post"
+msgstr ""
+
+#: classes/class-cred-customize.php:654
+msgid "Enable Breadcrumb( Only for Singular )"
+msgstr ""
+
+#: classes/class-cred-customize.php:672
+msgid "Enable Category( Only for Blog Page )"
+msgstr ""
+
+#: classes/class-cred-customize.php:690
+msgid "Enable Tag( Only for Blog Page )"
+msgstr ""
+
+#: classes/class-cred-customize.php:713
+msgid "On archive pages, posts show:"
+msgstr ""
+
+#: classes/class-cred-customize.php:715
+msgid "Full text"
+msgstr ""
+
+#: classes/class-cred-customize.php:716
+msgid "Summary"
+msgstr ""
+
+#: classes/class-cred-customize.php:728
+msgid "Colors"
+msgstr ""
+
+#: classes/class-cred-customize.php:734
+msgid "General"
+msgstr ""
+
+#: classes/class-cred-customize.php:744, classes/class-cred-customize.php:1185
+msgid "Header"
+msgstr ""
+
+#: classes/class-cred-customize.php:764, classes/class-cred-customize.php:1266
+msgid "Footer"
+msgstr ""
+
+#: classes/class-cred-customize.php:786, classes/class-cred-customize.php:927, classes/class-cred-customize.php:1032, classes/class-cred-customize.php:1091, classes/class-cred-customize.php:1130
+msgid "Background Color"
+msgstr ""
+
+#: classes/class-cred-customize.php:806
+msgid "Content Background Color"
+msgstr ""
+
+#: classes/class-cred-customize.php:826, classes/class-cred-customize.php:948, classes/class-cred-customize.php:1151
+msgid "Text Color"
+msgstr ""
+
+#: classes/class-cred-customize.php:846, classes/class-cred-customize.php:1172
+msgid "Link Color"
+msgstr ""
+
+#: classes/class-cred-customize.php:866
+msgid "Link Hover Color"
+msgstr ""
+
+#: classes/class-cred-customize.php:886
+msgid "Heading Color ( H1-H6 )"
+msgstr ""
+
+#: classes/class-cred-customize.php:906
+msgid "Heading Hover Color ( H1-H6 )"
+msgstr ""
+
+#: classes/class-cred-customize.php:969
+msgid "Submenu Beckground Color"
+msgstr ""
+
+#: classes/class-cred-customize.php:990
+msgid "Submenu Text Color"
+msgstr ""
+
+#: classes/class-cred-customize.php:1011
+msgid "Mobile Menu Beckground Color"
+msgstr ""
+
+#: classes/class-cred-customize.php:1053
+msgid "Border Color"
+msgstr ""
+
+#: classes/class-cred-customize.php:1071, classes/class-cred-customize.php:1278
+msgid "Footer Widget"
+msgstr ""
+
+#: classes/class-cred-customize.php:1108, classes/class-cred-customize.php:1330
+msgid "Footer Menu & Copyright"
+msgstr ""
+
+#: classes/class-cred-customize.php:1195
+msgid "Header Content"
+msgstr ""
+
+#: classes/class-cred-customize.php:1213
+msgid "Show search in header"
+msgstr ""
+
+#: classes/class-cred-customize.php:1232
+msgid "Enable Sticky Header"
+msgstr ""
+
+#: classes/class-cred-customize.php:1253, inc/helper.php:90
+msgid "Enable Transparency"
+msgstr ""
+
+#: classes/class-cred-customize.php:1296
+msgid "Select Footer Widget layout"
+msgstr ""
+
+#: classes/class-cred-customize.php:1301
+msgid "Footer Widget None"
+msgstr ""
+
+#: classes/class-cred-customize.php:1305
+msgid "Column One"
+msgstr ""
+
+#: classes/class-cred-customize.php:1309
+msgid "Column Two"
+msgstr ""
+
+#: classes/class-cred-customize.php:1313
+msgid "Column Three"
+msgstr ""
+
+#: classes/class-cred-customize.php:1317
+msgid "Column Four"
+msgstr ""
+
+#: classes/class-cred-customize.php:1347
+msgid "Enable Footer Menu?"
+msgstr ""
+
+#: classes/class-cred-customize.php:1362
+msgid "Footer Text"
+msgstr ""
+
+#: classes/class-cred-customize.php:1365
+msgid "This is footer textarea."
+msgstr ""
+
+#: classes/class-cred-customize.php:1384
+msgid "Text Alignment"
+msgstr ""
+
+#: classes/class-cred-customize.php:1388
+msgid "Left"
+msgstr ""
+
+#: classes/class-cred-customize.php:1389
+msgid "Center"
+msgstr ""
+
+#: classes/class-cred-customize.php:1390
+msgid "Right"
+msgstr ""
+
+#: classes/class-cred-walker-comment.php:55
+msgid "says:"
+msgstr ""
+
+#. translators: 1 = comment date, 2 = comment time
+#: classes/class-cred-walker-comment.php:68
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: classes/class-cred-walker-comment.php:76
+msgid "Edit"
+msgstr ""
+
+#: classes/class-cred-walker-comment.php:91
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: classes/class-cred-walker-comment.php:126
+msgid "By Post Author"
+msgstr ""
+
+#. translators: %d: ID of a post
+#: classes/class-cred-walker-page.php:81
+msgid "#%d (no title)"
+msgstr ""
+
+#: classes/class-cred-walker-page.php:133, inc/template-tags.php:572
+msgid "Show sub menu"
+msgstr ""
+
+#: inc/helper.php:60
+msgid "Credence Settings"
+msgstr ""
+
+#: inc/helper.php:79, inc/helper.php:89
+msgid "Customizer Setting"
+msgstr ""
+
+#: inc/helper.php:82
+msgid "No Sidebar"
+msgstr ""
+
+#: inc/helper.php:87
+msgid "Transparent Header"
+msgstr ""
+
+#: inc/helper.php:95
+msgid "Disable Sections"
+msgstr ""
+
+#: inc/helper.php:100
+msgid "Disable Title"
+msgstr ""
+
+#: inc/helper.php:107
+msgid "Disable Featured Image"
+msgstr ""
+
+#: inc/helper.php:213
+msgid "Home"
+msgstr ""
+
+#: inc/helper.php:215
+msgid "Search results for %s"
+msgstr ""
+
+#: inc/helper.php:216
+msgid "%s Search results for %s"
+msgstr ""
+
+#: inc/helper.php:218
+msgid "Page %d"
+msgstr ""
+
+#: inc/helper.php:219
+msgid "404 Nothing Found"
+msgstr ""
+
+#. translators: %s: Post title. Only visible to screen readers.
+#: inc/template-tags.php:213
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr ""
+
+#: inc/template-tags.php:356
+msgid "Post author"
+msgstr ""
+
+#. translators: %s: Author name
+#. translators: %s: Author name
+#: inc/template-tags.php:363, template-parts/entry-author-bio.php:20
+msgid "By %s"
+msgstr ""
+
+#: inc/template-tags.php:380
+msgid "Post date"
+msgstr ""
+
+#: inc/template-tags.php:398, template-parts/entry-header.php:35
+msgid "Categories"
+msgstr ""
+
+#: inc/template-tags.php:402
+msgctxt "A string that is output before one or more categories"
+msgid "In"
+msgstr ""
+
+#: inc/template-tags.php:421
+msgid "Tags"
+msgstr ""
+
+#: inc/template-tags.php:459
+msgid "Sticky post"
+msgstr ""
+
+#: template-parts/content.php:45
+msgid "Page"
+msgstr ""
+
+#: template-parts/content.php:45
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/entry-author-bio.php:32
+msgid "View Archive "
+msgstr ""
+
+#: template-parts/modal-menu.php:27
+msgid "Mobile"
+msgstr ""
+
+#: template-parts/modal-search.php:29
+msgid "Close search"
+msgstr ""
+
+#: template-parts/navigation.php:25
+msgid "Post"
+msgstr ""
+
+#: template-parts/pagination.php:20
+msgid "Newer <span class=\"nav-short\">Posts</span>"
+msgstr ""
+
+#: template-parts/pagination.php:26
+msgid "Older <span class=\"nav-short\">Posts</span>"
+msgstr ""
+
+#: template-parts/related-post.php:25
+msgid "Related Posts"
+msgstr ""
+
+#: templates/template-full-width.php:3
+msgid "Full Width Template"
+msgstr ""

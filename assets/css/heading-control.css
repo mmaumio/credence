@@ -1,0 +1,15 @@
+.custom-heading{
+    background: #ffffff;
+    padding: 10px 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ddd;
+}
+.custom-heading .customize-control-title{
+    font-size: 13px;
+    line-height: 1;
+    color: #1e8cbe;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+}

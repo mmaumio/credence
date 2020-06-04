@@ -1,0 +1,39 @@
+{
+	"name": "credence",
+	"version": "1.0.0",
+	"description": "Credence by Devscred",
+	"main": "gulpfile.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+git@gitlab.com:mmaumio/devstheme.git"
+	},
+	"keywords": [
+		"credence",
+		"wordperss",
+		"theme",
+		"wordpress"
+	],
+	"devDependencies": {
+		"autoprefixer": "latest",
+		"cssnano": "latest",
+		"del": "latest",
+		"gulp": "^3.9.1",
+		"gulp-concat": "^2.6.1",
+		"gulp-concat-css": "^3.1.0",
+		"gulp-cssnano": "^2.1.3",
+		"gulp-postcss": "^8.0.0",
+		"gulp-rename": "latest",
+		"gulp-uglify": "^3.0.2",
+		"gulp-watch": "^5.0.1",
+		"gulp-wp-pot": "latest",
+		"gulp-zip": "latest",
+		"postcss-object-fit-images": "latest",
+		"run-sequence": "latest"
+	},
+	"dependencies": {
+		"readable-stream": "^3.4.0"
+	}
+}

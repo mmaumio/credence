@@ -1,0 +1,24 @@
+.block-editor-page .edit-post-meta-boxes-area #poststuff #cred-page-settings-option h2.hndle {
+    border-bottom: 0;
+}
+.block-editor-page #cred-page-settings-option .cred-page-sidebar-display-option-wrap, 
+.block-editor-page #cred-page-settings-option .cred-page-transparent-header-display-option-wrap, 
+.block-editor-page #cred-page-settings-option .cred-page-content-layout-option-wrap, 
+.block-editor-page #cred-page-settings-option .cred-page-disable-section-option-wrap, 
+.block-editor-page #cred-page-settings-option .cred-page-disable-section-option-wrap div, 
+.block-editor-page #cred-page-settings-option .disable-section-meta div {
+    margin-bottom: 8px;
+}
+.block-editor-page #cred-page-settings-option .post-attributes-label-wrapper,
+.block-editor-page #cred-page-settings-option .cred-page-disable-section-option-wrap label {
+    margin-bottom: 4px;
+    display: block;
+}
+.block-editor-page #side-sortables #cred-page-settings-option select {
+    min-width: 84%;
+    padding: 3px 24px 3px 8px;
+    height: 20px;
+}
+#side-sortables #cred-page-settings-option select {
+    min-width: 100%;
+}
