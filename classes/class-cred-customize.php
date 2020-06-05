@@ -1541,22 +1541,6 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			return apply_filters( 'cred_sanitize_textarea_field', $filtered, $str );
 		}
 
-		/**
-		 * Sanitize google font
-		 */
-		function sanitize_google_font( $input ) {
-			$val =  json_decode( $input, true );
-			if( is_array( $val ) ) :
-				foreach ( $val as $key => $value ) :
-					$val[$key] = sanitize_text_field( $value );
-				endforeach;
-				$input = json_encode( $val );
-			else :
-				$input = json_encode( sanitize_text_field( $val ) );
-			endif;
-			return $input;
-		}
-
 	}
 
 	// Setup the Theme Customizer settings and controls.
