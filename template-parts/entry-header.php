@@ -45,7 +45,7 @@ endif;
 			if ( is_singular() ) :
 				global $post;
 				$cred_title_disable = get_post_meta( $post->ID, 'cred_disable_title_status', true );
-				if( 'yes' !== $cred_title_disable ) :
+				if( 1 != $cred_title_disable ) :
 					the_title( '<h1 class="entry-title">', '</h1>' );
 				endif;
 			else :

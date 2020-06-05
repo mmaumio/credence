@@ -1,6 +1,39 @@
 <?php
 
 /**
+ * get all google fonts
+ */
+if ( ! function_exists( 'cred_get_all_fonts' ) ) :
+	function cred_get_all_fonts() {
+		$googleApi = 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=AIzaSyDcAjGVgfOIeaMl5Ebppm2k65nmhKiXvu4';
+		$fontContent = wp_remote_get( $googleApi, array('sslverify'   => false) );
+		$content = json_decode($fontContent['body'], true);
+		$cred_all_google_fonts_list = $content['items'];
+		$cred_all_google_font_family_list = array_column( $cred_all_google_fonts_list, 'family' );
+		$cred_all_google_font_array = array_combine( $cred_all_google_font_family_list, $cred_all_google_font_family_list );
+
+		$custom_fonts = array(
+			'Arial' => 'Arial',
+			'Arial Black' => 'Arial Black',
+			'Courier' => 'Courier',
+			'Courier New' => 'Courier New',
+			'Georgia' => 'Georgia',
+			'Helvetica' => 'Helvetica',
+			'Times' => 'Times',
+			'Times New Roman' => 'Times New Roman',
+			'Trebuchet MS' => 'Trebuchet MS',
+			'Verdana' => 'Verdana'
+		);
+
+		$custom_fonts_list = apply_filters( 'cred_system_fonts', $custom_fonts );
+		$all_fonts_list = array_merge( $custom_fonts_list, $cred_all_google_font_array );
+
+		return $all_fonts_list;
+	}
+endif;
+
+
+/**
  * Checkbox sanitization callback example.
  * 
  * Sanitization callback for 'checkbox' type controls. This callback sanitizes `$checked`
@@ -15,6 +48,7 @@ if ( ! function_exists( 'cred_sanitize_checkbox' ) ) :
 		return ( ( isset( $checked ) && true == $checked ) ? true : false );
 	}
 endif;
+
 
 /**
  * Select sanitization callback example.
@@ -33,16 +67,12 @@ endif;
  * @return string Sanitized slug if it is a valid choice; otherwise, the setting default.
  */
 if ( ! function_exists( 'cred_sanitize_select' ) ) :
-	function cred_sanitize_select( $input, $setting ) {
-		
-		// Ensure input is a slug.
-		$input = sanitize_key( $input );
-		
-		// Get list of choices from the control associated with the setting.
-		$choices = $setting->manager->get_control( $setting->id )->choices;
+	function cred_sanitize_select( $input, $choices ) {
+
+		$value = sanitize_text_field( $input );
 		
 		// If the input is a valid key, return it; otherwise, return the default.
-		return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
+		return ( in_array( $value, $choices ) ? $value : false );
 	}
 endif;
 
@@ -120,6 +150,7 @@ function cred_page_custom_options(){
 
   	<div class="cred-page-settings-option-wrap">
 	  	<div class="cred-page-sidebar-display-option-wrap">
+
 		    <label for="cred_sidebar_status" class="post-attributes-label-wrapper"><strong><?php _e( 'Sidebar', 'credence' ); ?></strong></label>
 		    <select name="cred_sidebar_status" id="cred_sidebar_status">
 				<option value="default" <?php selected( $sidebar_enable, 'default' ); ?>> <?php _e( 'Customizer Setting', 'credence' ); ?></option>
@@ -173,12 +204,24 @@ function cred_save_post_and_page_details() {
 	    return $post->ID;
 	endif;
 
+	$sidebar_choices = array(
+		'default',
+		'sidebar_left',
+		'sidebar_right',
+		'sidebar_none'
+	);
+
+	$transparent_choices = array(
+		'default',
+		'transparent_header'
+	);
+
 	if( isset( $_POST['cred_sidebar_status'] ) ) :
-  		update_post_meta( $post->ID, 'cred_sidebar_status', $_POST['cred_sidebar_status'] );
+  		update_post_meta( $post->ID, 'cred_sidebar_status', cred_sanitize_select( $_POST['cred_sidebar_status'], $sidebar_choices ) );
 	endif;
 
 	if( isset( $_POST['cred_enable_transparent_header_status'] ) ) :
-  		update_post_meta( $post->ID, 'cred_enable_transparent_header_status', $_POST['cred_enable_transparent_header_status'] );
+  		update_post_meta( $post->ID, 'cred_enable_transparent_header_status', cred_sanitize_select( $_POST['cred_enable_transparent_header_status'], $transparent_choices ) );
 	endif;
 
 	if( isset( $_POST['cred_disable_title_status'] ) ) :
@@ -565,8 +608,3 @@ if( ! function_exists( 'cred_breadcrumb_args' ) ) :
 		return $args;
 	}
 endif;
-
-
-
-
-

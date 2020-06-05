@@ -664,13 +664,14 @@ add_filter( 'excerpt_more', 'cred_excerpt_more' );
 if ( ! function_exists( 'cred_fonts_url' ) ) :
 	function cred_fonts_url() {
 		$fonts_url      = '';
-		$header_font    = get_theme_mod( 'cred_header_google_font_list', 'Montserrat' );
-		$heading_1_font = get_theme_mod( 'cred_heading_1_typo', 'Montserrat' );
-		$heading_2_font = get_theme_mod( 'cred_heading_2_typo', 'Montserrat' );
-		$heading_3_font = get_theme_mod( 'cred_heading_3_typo', 'Montserrat' );
-		$heading_4_font = get_theme_mod( 'cred_heading_4_typo', 'Montserrat' );
-		$heading_5_font = get_theme_mod( 'cred_heading_5_typo', 'Montserrat' );
-		$heading_6_font = get_theme_mod( 'cred_heading_6_typo', 'Montserrat' );
+		$all_fonts_list = cred_get_all_fonts();
+		$header_font    = cred_sanitize_select( get_theme_mod( 'cred_header_google_font_list' ), $all_fonts_list );
+		$heading_1_font = cred_sanitize_select( get_theme_mod( 'cred_heading_1_typo' ), $all_fonts_list );
+		$heading_2_font = cred_sanitize_select( get_theme_mod( 'cred_heading_2_typo' ), $all_fonts_list );
+		$heading_3_font = cred_sanitize_select( get_theme_mod( 'cred_heading_3_typo' ), $all_fonts_list );
+		$heading_4_font = cred_sanitize_select( get_theme_mod( 'cred_heading_4_typo' ), $all_fonts_list );
+		$heading_5_font = cred_sanitize_select( get_theme_mod( 'cred_heading_5_typo' ), $all_fonts_list );
+		$heading_6_font = cred_sanitize_select( get_theme_mod( 'cred_heading_6_typo' ), $all_fonts_list );
 
 	    if ( 'off' !== $header_font || 'off' !== $$heading_1_font  || 'off' !== $$heading_2_font  || 'off' !== $$heading_3_font  || 'off' !== $$heading_4_font  || 'off' !== $$heading_5_font  || 'off' !== $$heading_6_font ) :
 	        $font_families = array();
@@ -728,6 +729,8 @@ function cred_customizer_style_method() {
 	endif;
 
 	$custom = '';
+
+	$all_fonts_list = cred_get_all_fonts();
 	
 	// body background
 	$body_background           = get_theme_mod( 'cred_body_background_color', '#f3f3f3' );
@@ -749,22 +752,22 @@ function cred_customizer_style_method() {
 	$link_hover_color          = get_theme_mod( 'cred_link_hover_color', '#5d00ff' );
 	
 	//typography of heading
-	$heading_1_typo            = get_theme_mod( 'cred_heading_1_typo', 'Montserrat' );
+	$heading_1_typo            = cred_sanitize_select( get_theme_mod( 'cred_heading_1_typo' ), $all_fonts_list );
 	$heading_1_font            = get_theme_mod( 'cred_heading_1_font', 42 );
 	
-	$heading_2_typo            = get_theme_mod( 'cred_heading_2_typo', 'Montserrat' );
+	$heading_2_typo            = cred_sanitize_select( get_theme_mod( 'cred_heading_2_typo' ), $all_fonts_list );
 	$heading_2_font            = get_theme_mod( 'cred_heading_2_font', 36 );
 	
-	$heading_3_typo            = get_theme_mod( 'cred_heading_3_typo', 'Montserrat' );
+	$heading_3_typo            = cred_sanitize_select( get_theme_mod( 'cred_heading_3_typo' ), $all_fonts_list );
 	$heading_3_font            = get_theme_mod( 'cred_heading_3_font', 30 );
 	
-	$heading_4_typo            = get_theme_mod( 'cred_heading_4_typo', 'Montserrat' );
+	$heading_4_typo            = cred_sanitize_select( get_theme_mod( 'cred_heading_4_typo' ), $all_fonts_list );
 	$heading_4_font            = get_theme_mod( 'cred_heading_4_font', 24 );
 	
-	$heading_5_typo            = get_theme_mod( 'cred_heading_5_typo', 'Montserrat' );
+	$heading_5_typo            = cred_sanitize_select( get_theme_mod( 'cred_heading_5_typo' ), $all_fonts_list );
 	$heading_5_font            = get_theme_mod( 'cred_heading_5_font', 20 );
 	
-	$heading_6_typo            = get_theme_mod( 'cred_heading_6_typo', 'Montserrat' );
+	$heading_6_typo            = cred_sanitize_select( get_theme_mod( 'cred_heading_6_typo' ), $all_fonts_list );
 	$heading_6_font            = get_theme_mod( 'cred_heading_6_font', 16 );
 	
 	//site width
@@ -777,7 +780,8 @@ function cred_customizer_style_method() {
 	$header_text               = get_theme_mod( 'cred_header_text_color', '#707070' );
 	
 	//header font
-	$header_font               = get_theme_mod( 'cred_header_google_font_list', 'Montserrat' );
+	$header_font               = cred_sanitize_select( get_theme_mod( 'cred_header_google_font_list' ), $all_fonts_list );
+
 	//header submenu background color
 	$header_submenu_background = get_theme_mod( 'cred_header_submenu_background_color', '#000000' );
 

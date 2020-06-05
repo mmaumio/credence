@@ -8,7 +8,7 @@
 global $post;
 $cred_featured_image_disable = get_post_meta( $post->ID, 'cred_disable_featured_image_status', true );
 
-if ( has_post_thumbnail() && ! post_password_required() && 'yes' !== $cred_featured_image_disable ) :
+if ( has_post_thumbnail() && ! post_password_required() && 1 != $cred_featured_image_disable ) :
 
 	$featured_media_inner_classes = '';
 
