@@ -60,16 +60,6 @@ endif;
 				$intro_text_width = ' thin';
 			endif;
 
-			if ( has_excerpt() && is_singular() ) :
-				?>
-
-				<div class="intro-text section-inner max-percentage<?php echo $intro_text_width; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>">
-					<?php the_excerpt(); ?>
-				</div>
-
-				<?php
-			endif;
-
 			// Default to displaying the post meta.
 			cred_post_meta( get_the_ID(), 'single-top' );
 

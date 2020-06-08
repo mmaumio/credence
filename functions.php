@@ -156,9 +156,6 @@ require get_template_directory() . '/classes/radio-img-control.php';
 // Range Custom Control
 require get_template_directory() . '/classes/range-custom-control.php';
 
-// Google font Custom Control
-require get_template_directory() . '/classes/google-font-control.php';
-
 // Custome Heading
 require get_template_directory() . '/classes/heading-control.php';
 
@@ -178,16 +175,64 @@ function cred_register_styles() {
 
 	$theme_version = wp_get_theme()->get( 'Version' );
 	$file_prefix = '';
-	if ( is_rtl() ) {
+	if ( is_rtl() ) :
 		$file_prefix .= '-rtl';
-	}
+	endif;
 
 	wp_enqueue_style( 'cred-style', get_template_directory_uri() . '/assets/css/style' . $file_prefix . '.min.css', array(), $theme_version );
 
 	// Add output of Customizer settings as inline style.
 	wp_add_inline_style( 'cred-style', cred_get_customizer_css( 'front-end' ) );
 
-	wp_enqueue_style('cred-google-fonts', cred_fonts_url(), array(), null);
+	$header_typo = esc_html( get_theme_mod( 'cred_header_google_font_list' ) );
+	$heading_1_typo = esc_html( get_theme_mod( 'cred_heading_1_typo' ) );
+	$heading_2_typo = esc_html( get_theme_mod( 'cred_heading_2_typo' ) );
+	$heading_3_typo = esc_html( get_theme_mod( 'cred_heading_3_typo' ) );
+	$heading_4_typo = esc_html( get_theme_mod( 'cred_heading_4_typo' ) );
+	$heading_5_typo = esc_html( get_theme_mod( 'cred_heading_5_typo' ) );
+	$heading_6_typo = esc_html( get_theme_mod( 'cred_heading_6_typo' ) );
+
+	if( $header_typo ) :
+		wp_enqueue_style( 'cred-body-fonts', '//fonts.googleapis.com/css?family='. $header_typo );
+	else :
+		wp_enqueue_style( 'cred-source-body', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,400italic,700,600');
+	endif;
+
+	if( $heading_1_typo ) :
+		wp_enqueue_style( 'cred-heading-1-fonts', '//fonts.googleapis.com/css?family='. $heading_1_typo );
+	else :
+		wp_enqueue_style( 'cred-source-body', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,400italic,700,600');
+	endif;
+
+	if( $heading_2_typo ) :
+		wp_enqueue_style( 'cred-heading-2-fonts', '//fonts.googleapis.com/css?family='. $heading_2_typo );
+	else :
+		wp_enqueue_style( 'cred-source-body', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,400italic,700,600');
+	endif;
+
+	if( $heading_3_typo ) :
+		wp_enqueue_style( 'cred-heading-3-fonts', '//fonts.googleapis.com/css?family='. $heading_3_typo );
+	else :
+		wp_enqueue_style( 'cred-source-body', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,400italic,700,600');
+	endif;
+
+	if( $heading_4_typo ) :
+		wp_enqueue_style( 'cred-heading-4-fonts', '//fonts.googleapis.com/css?family='. $heading_4_typo );
+	else :
+		wp_enqueue_style( 'cred-source-body', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,400italic,700,600');
+	endif;
+
+	if( $heading_5_typo ) :
+		wp_enqueue_style( 'cred-heading-5-fonts', '//fonts.googleapis.com/css?family='. $heading_5_typo );
+	else :
+		wp_enqueue_style( 'cred-source-body', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,400italic,700,600');
+	endif;
+
+	if( $heading_6_typo ) :
+		wp_enqueue_style( 'cred-heading-6-fonts', '//fonts.googleapis.com/css?family='. $heading_6_typo );
+	else :
+		wp_enqueue_style( 'cred-source-body', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,400italic,700,600');
+	endif;
 }
 
 add_action( 'wp_enqueue_scripts', 'cred_register_styles' );
@@ -655,63 +700,57 @@ add_filter( 'excerpt_more', 'cred_excerpt_more' );
 
 
 /**
- * Google Fonts URL function
- *
- * @since 1.0.0
- *
- * @return string $URL
+ * Sanitizes Fonts
  */
-if ( ! function_exists( 'cred_fonts_url' ) ) :
-	function cred_fonts_url() {
-		$fonts_url      = '';
-		$all_fonts_list = cred_get_all_fonts();
-		$header_font    = cred_sanitize_select( get_theme_mod( 'cred_header_google_font_list' ), $all_fonts_list );
-		$heading_1_font = cred_sanitize_select( get_theme_mod( 'cred_heading_1_typo' ), $all_fonts_list );
-		$heading_2_font = cred_sanitize_select( get_theme_mod( 'cred_heading_2_typo' ), $all_fonts_list );
-		$heading_3_font = cred_sanitize_select( get_theme_mod( 'cred_heading_3_typo' ), $all_fonts_list );
-		$heading_4_font = cred_sanitize_select( get_theme_mod( 'cred_heading_4_typo' ), $all_fonts_list );
-		$heading_5_font = cred_sanitize_select( get_theme_mod( 'cred_heading_5_typo' ), $all_fonts_list );
-		$heading_6_font = cred_sanitize_select( get_theme_mod( 'cred_heading_6_typo' ), $all_fonts_list );
+if ( ! function_exists( 'cred_sanitize_fonts' ) ) :
+	function cred_sanitize_fonts( $input ) {
+		$valid = array(
+			'Source Sans Pro:400,700,400italic,700italic' => 'Source Sans Pro',
+			'Open Sans:400italic,700italic,400,700' => 'Open Sans',
+			'Oswald:400,700' => 'Oswald',
+			'Playfair Display:400,700,400italic' => 'Playfair Display',
+			'Montserrat:400,700' => 'Montserrat',
+			'Raleway:400,700' => 'Raleway',
+			'Droid Sans:400,700' => 'Droid Sans',
+			'Lato:400,700,400italic,700italic' => 'Lato',
+			'Arvo:400,700,400italic,700italic' => 'Arvo',
+			'Lora:400,700,400italic,700italic' => 'Lora',
+			'Merriweather:400,300italic,300,400italic,700,700italic' => 'Merriweather',
+			'Oxygen:400,300,700' => 'Oxygen',
+			'PT Serif:400,700' => 'PT Serif',
+			'PT Sans:400,700,400italic,700italic' => 'PT Sans',
+			'PT Sans Narrow:400,700' => 'PT Sans Narrow',
+			'Cabin:400,700,400italic' => 'Cabin',
+			'Fjalla One:400' => 'Fjalla One',
+			'Francois One:400' => 'Francois One',
+			'Josefin Sans:400,300,600,700' => 'Josefin Sans',
+			'Libre Baskerville:400,400italic,700' => 'Libre Baskerville',
+			'Arimo:400,700,400italic,700italic' => 'Arimo',
+			'Ubuntu:400,700,400italic,700italic' => 'Ubuntu',
+			'Bitter:400,700,400italic' => 'Bitter',
+			'Droid Serif:400,700,400italic,700italic' => 'Droid Serif',
+			'Roboto:400,400italic,700,700italic' => 'Roboto',
+			'Open Sans Condensed:700,300italic,300' => 'Open Sans Condensed',
+			'Roboto Condensed:400italic,700italic,400,700' => 'Roboto Condensed',
+			'Roboto Slab:400,700' => 'Roboto Slab',
+			'Yanone Kaffeesatz:400,700' => 'Yanone Kaffeesatz',
+			'Rokkitt:400' => 'Rokkitt',
+			'Arial Black:400,700' => 'Arial Black',
+			'Courier:400,700' => 'Courier',
+			'Courier New:400,700' => 'Courier New',
+			'Georgia:400,700' => 'Georgia',
+			'Helvetica:400,700' => 'Helvetica',
+			'Times:400,700' => 'Times',
+			'Times New Roman:400,700' => 'Times New Roman',
+			'Trebuchet MS:400,700' => 'Trebuchet MS',
+			'Verdana:400,700' => 'Verdana'
+		);
 
-	    if ( 'off' !== $header_font || 'off' !== $$heading_1_font  || 'off' !== $$heading_2_font  || 'off' !== $$heading_3_font  || 'off' !== $$heading_4_font  || 'off' !== $$heading_5_font  || 'off' !== $$heading_6_font ) :
-	        $font_families = array();
-
-	        if ( 'off' !== $header_font ) :
-	            $font_families[] = $header_font;
-	        endif;
-
-	        if ( 'off' !== $heading_1_font ) :
-	            $font_families[] = $heading_1_font;
-	        endif;
-
-	        if ( 'off' !== $heading_2_font ) :
-	            $font_families[] = $heading_2_font;
-	        endif;
-
-	        if ( 'off' !== $heading_3_font ) :
-	            $font_families[] = $heading_3_font;
-	        endif;
-
-	        if ( 'off' !== $heading_4_font ) :
-	            $font_families[] = $heading_4_font;
-	        endif;
-
-	        if ( 'off' !== $heading_5_font ) :
-	            $font_families[] = $heading_5_font;
-	        endif;
-
-	        if ( 'off' !== $heading_6_font ) :
-	            $font_families[] = $heading_6_font;
-	        endif;
-
-	        $query_args = array(
-	            'family' => urlencode( implode( '|', array_unique($font_families) ) ),
-	        );
-
-	        $fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
-	    endif;
-
-	    return esc_url_raw( $fonts_url );
+		if ( array_key_exists( $input, $valid ) ) :
+			return $input;
+		else :
+			return '';
+		endif;
 	}
 endif;
 
@@ -730,8 +769,6 @@ function cred_customizer_style_method() {
 
 	$custom = '';
 
-	$all_fonts_list = cred_get_all_fonts();
-	
 	// body background
 	$body_background           = get_theme_mod( 'cred_body_background_color', '#f3f3f3' );
 	
@@ -750,24 +787,27 @@ function cred_customizer_style_method() {
 	// Link Color
 	$link_color                = get_theme_mod( 'cred_link_color', '#6871FF' );
 	$link_hover_color          = get_theme_mod( 'cred_link_hover_color', '#5d00ff' );
+
+	// header font
+	$header_typo = esc_html( get_theme_mod( 'cred_header_google_font_list' ) );
 	
 	//typography of heading
-	$heading_1_typo            = cred_sanitize_select( get_theme_mod( 'cred_heading_1_typo' ), $all_fonts_list );
+	$heading_1_typo            = esc_html( get_theme_mod( 'cred_heading_1_typo' ) );
 	$heading_1_font            = get_theme_mod( 'cred_heading_1_font', 42 );
 	
-	$heading_2_typo            = cred_sanitize_select( get_theme_mod( 'cred_heading_2_typo' ), $all_fonts_list );
+	$heading_2_typo            = esc_html( get_theme_mod( 'cred_heading_2_typo' ) );
 	$heading_2_font            = get_theme_mod( 'cred_heading_2_font', 36 );
 	
-	$heading_3_typo            = cred_sanitize_select( get_theme_mod( 'cred_heading_3_typo' ), $all_fonts_list );
+	$heading_3_typo            = esc_html( get_theme_mod( 'cred_heading_3_typo' ) );
 	$heading_3_font            = get_theme_mod( 'cred_heading_3_font', 30 );
 	
-	$heading_4_typo            = cred_sanitize_select( get_theme_mod( 'cred_heading_4_typo' ), $all_fonts_list );
+	$heading_4_typo            = esc_html( get_theme_mod( 'cred_heading_4_typo' ) );
 	$heading_4_font            = get_theme_mod( 'cred_heading_4_font', 24 );
 	
-	$heading_5_typo            = cred_sanitize_select( get_theme_mod( 'cred_heading_5_typo' ), $all_fonts_list );
+	$heading_5_typo            = esc_html( get_theme_mod( 'cred_heading_5_typo' ) );
 	$heading_5_font            = get_theme_mod( 'cred_heading_5_font', 20 );
 	
-	$heading_6_typo            = cred_sanitize_select( get_theme_mod( 'cred_heading_6_typo' ), $all_fonts_list );
+	$heading_6_typo            = esc_html( get_theme_mod( 'cred_heading_6_typo' ) );
 	$heading_6_font            = get_theme_mod( 'cred_heading_6_font', 16 );
 	
 	//site width
@@ -779,9 +819,6 @@ function cred_customizer_style_method() {
 	//header text color
 	$header_text               = get_theme_mod( 'cred_header_text_color', '#707070' );
 	
-	//header font
-	$header_font               = cred_sanitize_select( get_theme_mod( 'cred_header_google_font_list' ), $all_fonts_list );
-
 	//header submenu background color
 	$header_submenu_background = get_theme_mod( 'cred_header_submenu_background_color', '#000000' );
 
@@ -935,54 +972,61 @@ function cred_customizer_style_method() {
 	}
 	';
 
-	if ( isset( $header_font ) && ! empty( $header_font ) ) :
+	if ( isset( $header_typo ) && ! empty( $header_typo ) ) :
+		$font_pieces = explode( ":", $header_typo );
 		$custom .= '
 		body:not(.overlay-header) .primary-menu > li > a, 
 		.modal-menu li a,
 		.primary-menu ul a {
-        	font-family: '. esc_attr( $header_font ) . ';
+        	font-family: '. esc_attr( $font_pieces[0] ) . ', sans-serif;
     	}';
 	endif;
 
 	if ( isset( $heading_1_typo ) && ! empty( $heading_1_typo ) ) :
+		$font_pieces = explode( ":", $heading_1_typo );
 		$custom .= '
 		h1 {
-        	font-family: '. esc_attr( $heading_1_typo ) . ';
+        	font-family: '. esc_attr( $font_pieces[0] ) . ', sans-serif;
     	}';
 	endif;
 
 	if ( isset( $heading_2_typo ) && ! empty( $heading_2_typo ) ) :
+		$font_pieces = explode( ":", $heading_2_typo );
 		$custom .= '
 		h2 {
-        	font-family: '. esc_attr( $heading_2_typo ) . ';
+        	font-family: '. esc_attr( $font_pieces[0] ) . ', sans-serif;
     	}';
 	endif;
 
 	if ( isset( $heading_3_typo ) && ! empty( $heading_3_typo ) ) :
+		$font_pieces = explode( ":", $heading_3_typo );
 		$custom .= '
 		h3 {
-        	font-family: '. esc_attr( $heading_3_typo ) . ';
+        	font-family: '. esc_attr( $font_pieces[0] ) . ', sans-serif;
     	}';
 	endif;
 
 	if ( isset( $heading_4_typo ) && ! empty( $heading_4_typo ) ) :
+		$font_pieces = explode( ":", $heading_4_typo );
 		$custom .= '
 		h4 {
-        	font-family: '. esc_attr( $heading_4_typo ) . ';
+        	font-family: '. esc_attr( $font_pieces[0] ) . ', sans-serif;
     	}';
 	endif;
 
 	if ( isset( $heading_5_typo ) && ! empty( $heading_5_typo ) ) :
+		$font_pieces = explode( ":", $heading_5_typo );
 		$custom .= '
 		h5 {
-        	font-family: '. esc_attr( $heading_5_typo ) . ';
+        	font-family: '. esc_attr( $font_pieces[0] ) . ', sans-serif;
     	}';
 	endif;
 
 	if ( isset( $heading_6_typo ) && ! empty( $heading_6_typo ) ) :
+		$font_pieces = explode( ":", $heading_6_typo );
 		$custom .= '
 		h6 {
-        	font-family: '. esc_attr( $heading_6_typo ) . ';
+        	font-family: '. esc_attr( $font_pieces[0] ) . ', sans-serif;
     	}';
 	endif;
 

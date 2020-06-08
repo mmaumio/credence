@@ -6,10 +6,10 @@
  * @since 1.0.0
  */
 
-$cred_cred_enable_related_post = get_theme_mod( 'cred_enable_related_post', 1 );
+$cred_enable_related_post = get_theme_mod( 'cred_enable_related_post', 1 );
 $show_related_post = true;
 
-if( $cred_cred_enable_related_post && is_single() && 'post' === get_post_type() && true === $show_related_post ) :
+if( $cred_enable_related_post && is_single() && 'post' === get_post_type() && true === $show_related_post ) :
     $related = get_posts( 
         array( 
             'category__in' => wp_get_post_categories( $post->ID ), 
