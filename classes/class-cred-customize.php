@@ -128,6 +128,15 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			);
 
 			$font_choices = array(
+				'Arial Black:400,700' => 'Arial Black',
+				'Courier:400,700' => 'Courier',
+				'Courier New:400,700' => 'Courier New',
+				'Georgia:400,700' => 'Georgia',
+				'Helvetica:400,700' => 'Helvetica',
+				'Times:400,700' => 'Times',
+				'Times New Roman:400,700' => 'Times New Roman',
+				'Trebuchet MS:400,700' => 'Trebuchet MS',
+				'Verdana:400,700' => 'Verdana',
 				'Source Sans Pro:400,700,400italic,700italic' => 'Source Sans Pro',
 				'Open Sans:400italic,700italic,400,700' => 'Open Sans',
 				'Oswald:400,700' => 'Oswald',
@@ -157,20 +166,11 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 				'Roboto Condensed:400italic,700italic,400,700' => 'Roboto Condensed',
 				'Roboto Slab:400,700' => 'Roboto Slab',
 				'Yanone Kaffeesatz:400,700' => 'Yanone Kaffeesatz',
-				'Rokkitt:400' => 'Rokkitt',
-				'Arial Black:400,700' => 'Arial Black',
-				'Courier:400,700' => 'Courier',
-				'Courier New:400,700' => 'Courier New',
-				'Georgia:400,700' => 'Georgia',
-				'Helvetica:400,700' => 'Helvetica',
-				'Times:400,700' => 'Times',
-				'Times New Roman:400,700' => 'Times New Roman',
-				'Trebuchet MS:400,700' => 'Trebuchet MS',
-				'Verdana:400,700' => 'Verdana'
+				'Rokkitt:400' => 'Rokkitt'
 			);
 
 			$wp_customize->add_setting( 'linje_body_fonts', array(
-					'sanitize_callback' => 'cred_sanitize_fonts'
+					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
 				)
 			);
 
@@ -203,7 +203,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			$wp_customize->add_setting( 
 				'cred_header_google_font_list', 
 				array(
-					'sanitize_callback' => 'cred_sanitize_fonts'
+					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
 				) 
 			);
 
@@ -236,7 +236,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			$wp_customize->add_setting( 
 				'cred_heading_1_typo', 
 				array(
-					'sanitize_callback' => 'cred_sanitize_fonts'
+					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
 				) 
 			);
 
@@ -293,7 +293,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			$wp_customize->add_setting( 
 				'cred_heading_2_typo', 
 				array(
-					'sanitize_callback' => 'cred_sanitize_fonts'
+					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
 				) 
 			);
 
@@ -349,7 +349,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			$wp_customize->add_setting( 
 				'cred_heading_3_typo', 
 				array(
-					'sanitize_callback' => 'cred_sanitize_fonts'
+					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
 				) 
 			);
 
@@ -405,7 +405,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			$wp_customize->add_setting( 
 				'cred_heading_4_typo', 
 				array(
-					'sanitize_callback' => 'cred_sanitize_fonts'
+					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
 				) 
 			);
 
@@ -461,7 +461,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			$wp_customize->add_setting( 
 				'cred_heading_5_typo', 
 				array(
-					'sanitize_callback' => 'cred_sanitize_fonts'
+					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
 				) 
 			);
 
@@ -517,7 +517,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			$wp_customize->add_setting( 
 				'cred_heading_6_typo', 
 				array(
-					'sanitize_callback' => 'cred_sanitize_fonts'
+					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
 				) 
 			);
 
@@ -1532,6 +1532,61 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 		  
 			// If the input is an absolute integer, return it; otherwise, return the default
 			return ( $number ? $number : $setting->default );
+		}
+
+		/**
+		 *  Sanitize Fonts
+		 * 
+		 */
+		public static function cred_sanitize_fonts( $input ) {
+			$valid = array(
+				'Arial Black:400,700' => 'Arial Black',
+				'Courier:400,700' => 'Courier',
+				'Courier New:400,700' => 'Courier New',
+				'Georgia:400,700' => 'Georgia',
+				'Helvetica:400,700' => 'Helvetica',
+				'Times:400,700' => 'Times',
+				'Times New Roman:400,700' => 'Times New Roman',
+				'Trebuchet MS:400,700' => 'Trebuchet MS',
+				'Verdana:400,700' => 'Verdana',
+				'Source Sans Pro:400,700,400italic,700italic' => 'Source Sans Pro',
+				'Open Sans:400italic,700italic,400,700' => 'Open Sans',
+				'Oswald:400,700' => 'Oswald',
+				'Playfair Display:400,700,400italic' => 'Playfair Display',
+				'Montserrat:400,700' => 'Montserrat',
+				'Raleway:400,700' => 'Raleway',
+				'Droid Sans:400,700' => 'Droid Sans',
+				'Lato:400,700,400italic,700italic' => 'Lato',
+				'Arvo:400,700,400italic,700italic' => 'Arvo',
+				'Lora:400,700,400italic,700italic' => 'Lora',
+				'Merriweather:400,300italic,300,400italic,700,700italic' => 'Merriweather',
+				'Oxygen:400,300,700' => 'Oxygen',
+				'PT Serif:400,700' => 'PT Serif',
+				'PT Sans:400,700,400italic,700italic' => 'PT Sans',
+				'PT Sans Narrow:400,700' => 'PT Sans Narrow',
+				'Cabin:400,700,400italic' => 'Cabin',
+				'Fjalla One:400' => 'Fjalla One',
+				'Francois One:400' => 'Francois One',
+				'Josefin Sans:400,300,600,700' => 'Josefin Sans',
+				'Libre Baskerville:400,400italic,700' => 'Libre Baskerville',
+				'Arimo:400,700,400italic,700italic' => 'Arimo',
+				'Ubuntu:400,700,400italic,700italic' => 'Ubuntu',
+				'Bitter:400,700,400italic' => 'Bitter',
+				'Droid Serif:400,700,400italic,700italic' => 'Droid Serif',
+				'Roboto:400,400italic,700,700italic' => 'Roboto',
+				'Open Sans Condensed:700,300italic,300' => 'Open Sans Condensed',
+				'Roboto Condensed:400italic,700italic,400,700' => 'Roboto Condensed',
+				'Roboto Slab:400,700' => 'Roboto Slab',
+				'Yanone Kaffeesatz:400,700' => 'Yanone Kaffeesatz',
+				'Rokkitt:400' => 'Rokkitt'
+			);
+
+			if ( array_key_exists( $input, $valid ) ) :
+				return $input;
+			else :
+				return '';
+			endif;
+		
 		}
 
 		/**
