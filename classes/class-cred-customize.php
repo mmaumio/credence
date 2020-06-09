@@ -670,7 +670,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 					'type'     => 'checkbox',
 					'section'  => 'cred_blog_section',
 					'priority' => 10,
-					'label'    => __( 'Enable Author Bio', 'credence' )
+					'label'    => __( 'Enable Author Bio( Only for Singular )', 'credence' )
 				)
 			);
 
@@ -686,7 +686,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			$wp_customize->add_control(
 				'cred_enable_related_post',
 				array(
-					'label'    => __( 'Enable Related Post', 'credence' ),
+					'label'    => __( 'Enable Related Post( Only for Singular )', 'credence' ),
 					'type'     => 'checkbox',
 					'section'  => 'cred_blog_section'
 				)
