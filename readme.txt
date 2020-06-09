@@ -3,8 +3,8 @@ Contributors: devscred
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: custom-menu, custom-logo, featured-images, full-width-template, one-column, two-columns, left-sidebar, right-sidebar, e-commerce, custom-colors, editor-style, post-formats, rtl-language-support, theme-options, translation-ready, blog
-Tested up to: 5.4
-Requires PHP: 5.3
+Tested up to: 5.4.1
+Requires PHP: 5.6
 
 A clean, lightweight and minimal WordPress theme for versatile use across every niche you can think.
 
@@ -51,7 +51,6 @@ Code for some of the Customizer Controls
 Author: Anthony Hortin
 License: GNU General Public License v2 or later
 Source: https://github.com/maddisondesigns/customizer-custom-controls
-
 
 Code from Twenty Twenty
 Copyright (c) 2019-2020 WordPress.org
