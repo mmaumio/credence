@@ -127,72 +127,17 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 				)
 			);
 
-			$font_choices = array(
-				'Arial Black:400,700' => 'Arial Black',
-				'Courier:400,700' => 'Courier',
-				'Courier New:400,700' => 'Courier New',
-				'Georgia:400,700' => 'Georgia',
-				'Helvetica:400,700' => 'Helvetica',
-				'Times:400,700' => 'Times',
-				'Times New Roman:400,700' => 'Times New Roman',
-				'Trebuchet MS:400,700' => 'Trebuchet MS',
-				'Verdana:400,700' => 'Verdana',
-				'Source Sans Pro:400,700,400italic,700italic' => 'Source Sans Pro',
-				'Open Sans:400italic,700italic,400,700' => 'Open Sans',
-				'Oswald:400,700' => 'Oswald',
-				'Playfair Display:400,700,400italic' => 'Playfair Display',
-				'Montserrat:400,700' => 'Montserrat',
-				'Raleway:400,700' => 'Raleway',
-				'Droid Sans:400,700' => 'Droid Sans',
-				'Lato:400,700,400italic,700italic' => 'Lato',
-				'Arvo:400,700,400italic,700italic' => 'Arvo',
-				'Lora:400,700,400italic,700italic' => 'Lora',
-				'Merriweather:400,300italic,300,400italic,700,700italic' => 'Merriweather',
-				'Oxygen:400,300,700' => 'Oxygen',
-				'PT Serif:400,700' => 'PT Serif',
-				'PT Sans:400,700,400italic,700italic' => 'PT Sans',
-				'PT Sans Narrow:400,700' => 'PT Sans Narrow',
-				'Cabin:400,700,400italic' => 'Cabin',
-				'Fjalla One:400' => 'Fjalla One',
-				'Francois One:400' => 'Francois One',
-				'Josefin Sans:400,300,600,700' => 'Josefin Sans',
-				'Libre Baskerville:400,400italic,700' => 'Libre Baskerville',
-				'Arimo:400,700,400italic,700italic' => 'Arimo',
-				'Ubuntu:400,700,400italic,700italic' => 'Ubuntu',
-				'Bitter:400,700,400italic' => 'Bitter',
-				'Droid Serif:400,700,400italic,700italic' => 'Droid Serif',
-				'Roboto:400,400italic,700,700italic' => 'Roboto',
-				'Open Sans Condensed:700,300italic,300' => 'Open Sans Condensed',
-				'Roboto Condensed:400italic,700italic,400,700' => 'Roboto Condensed',
-				'Roboto Slab:400,700' => 'Roboto Slab',
-				'Yanone Kaffeesatz:400,700' => 'Yanone Kaffeesatz',
-				'Rokkitt:400' => 'Rokkitt'
-			);
-
-			$wp_customize->add_setting( 'linje_body_fonts', array(
-					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
-				)
-			);
-
-			$wp_customize->add_control( 'linje_body_fonts', array(
-					'type' => 'select',
-					'description' => __( 'Select your desired font for the body.', 'credence' ),
-					'section' => 'cred_typography_section',
-					'choices' => $font_choices
-				)
-			);
-
 			// Header Typography
 			$wp_customize->add_setting( 
-				'cred_header_google_font_heading', 
+				'cred_cred_header_google_font_heading', 
 				array(
-					'sanitize_callback' => 'sanitize_text_field'
-				)
+					'sanitize_callback' => 'sanitize_text'
+				) 
 			);
 
 			$wp_customize->add_control( 
 				new Cred_Heading_Custom_Control(
-					$wp_customize, 'cred_header_google_font_heading',
+					$wp_customize, 'cred_cred_header_google_font_heading',
 					array(
 						'label'      => __( 'Header Menu Font', 'credence' ),
 						'section'    => 'cred_typography_section'
@@ -200,22 +145,19 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 				)
 			);
 
-			$wp_customize->add_setting( 
-				'cred_header_google_font_list', 
-				array(
-					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
-				) 
-			);
+			$wp_customize->add_setting( 'cred_header_google_font_list', array(
+				'default'           => 'Montserrat',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
+			) );
 
-			$wp_customize->add_control( 'cred_header_google_font_list', array(
-					'type' => 'select',
-					'description' => __( 'Typography', 'credence' ),
-					'section' => 'cred_typography_section',
-					'choices' => $font_choices
-				)
-			);
+			$wp_customize->add_control( new Cred_Google_Font_Dropdown_Custom_Control( $wp_customize, 'cred_header_google_font_list', array(
+				'label'      => __( 'Typography', 'credence' ),
+				'section'    => 'cred_typography_section',
+				'settings'   => 'cred_header_google_font_list'
+			) ) );
 
 			//Heading 1
+
 			$wp_customize->add_setting( 
 				'cred_heading_1', 
 				array(
@@ -233,20 +175,16 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 				)
 			);
 
-			$wp_customize->add_setting( 
-				'cred_heading_1_typo', 
-				array(
-					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
-				) 
-			);
+			$wp_customize->add_setting( 'cred_heading_1_typo', array(
+				'default'           => 'Montserrat',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
+			) );
 
-			$wp_customize->add_control( 'cred_heading_1_typo', array(
-					'type' => 'select',
-					'description' => __( 'Typography', 'credence' ),
-					'section' => 'cred_typography_section',
-					'choices' => $font_choices
-				)
-			);
+			$wp_customize->add_control( new Cred_Google_Font_Dropdown_Custom_Control( $wp_customize, 'cred_heading_1_typo', array(
+				'label'      => __( 'Typography', 'credence' ),
+				'section'    => 'cred_typography_section',
+				'settings'   => 'cred_heading_1_typo'
+			) ) );
 
 			$wp_customize->add_setting( 'cred_heading_1_font', array(
 				'default' => '42',
@@ -273,6 +211,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			);
 
 			//Heading 2
+
 			$wp_customize->add_setting( 
 				'cred_heading_2', 
 				array(
@@ -290,20 +229,16 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 				)
 			);
 
-			$wp_customize->add_setting( 
-				'cred_heading_2_typo', 
-				array(
-					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
-				) 
-			);
+			$wp_customize->add_setting( 'cred_heading_2_typo', array(
+				'default'           => 'Montserrat',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
+			) );
 
-			$wp_customize->add_control( 'cred_heading_2_typo', array(
-					'type' => 'select',
-					'description' => __( 'Typography', 'credence' ),
-					'section' => 'cred_typography_section',
-					'choices' => $font_choices
-				)
-			);
+			$wp_customize->add_control( new Cred_Google_Font_Dropdown_Custom_Control( $wp_customize, 'cred_heading_2_typo', array(
+				'label'      => __( 'Typography', 'credence' ),
+				'section'    => 'cred_typography_section',
+				'settings'   => 'cred_heading_2_typo'
+			) ) );
 
 			$wp_customize->add_setting( 'cred_heading_2_font', array(
 				'default'    => '36',
@@ -346,20 +281,16 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 				)
 			);
 
-			$wp_customize->add_setting( 
-				'cred_heading_3_typo', 
-				array(
-					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
-				) 
-			);
+			$wp_customize->add_setting( 'cred_heading_3_typo', array(
+				'default'           => 'Montserrat',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
+			) );
 
-			$wp_customize->add_control( 'cred_heading_3_typo', array(
-					'type' => 'select',
-					'description' => __( 'Typography', 'credence' ),
-					'section' => 'cred_typography_section',
-					'choices' => $font_choices
-				)
-			);
+			$wp_customize->add_control( new Cred_Google_Font_Dropdown_Custom_Control( $wp_customize, 'cred_heading_3_typo', array(
+				'label'      => __( 'Typography', 'credence' ),
+				'section'    => 'cred_typography_section',
+				'settings'   => 'cred_heading_3_typo'
+			) ) );
 
 			$wp_customize->add_setting( 'cred_heading_3_font', array(
 				'default'    => '30',
@@ -402,20 +333,16 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 				)
 			);
 
-			$wp_customize->add_setting( 
-				'cred_heading_4_typo', 
-				array(
-					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
-				) 
-			);
+			$wp_customize->add_setting( 'cred_heading_4_typo', array(
+				'default'           => 'Montserrat',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
+			) );
 
-			$wp_customize->add_control( 'cred_heading_4_typo', array(
-					'type' => 'select',
-					'description' => __( 'Typography', 'credence' ),
-					'section' => 'cred_typography_section',
-					'choices' => $font_choices
-				)
-			);
+			$wp_customize->add_control( new Cred_Google_Font_Dropdown_Custom_Control( $wp_customize, 'cred_heading_4_typo', array(
+				'label'      => __( 'Typography', 'credence' ),
+				'section'    => 'cred_typography_section',
+				'settings'   => 'cred_heading_4_typo'
+			) ) );
 
 			$wp_customize->add_setting( 'cred_heading_4_font', array(
 				'default'    => '24',
@@ -458,20 +385,16 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 				)
 			);
 
-			$wp_customize->add_setting( 
-				'cred_heading_5_typo', 
-				array(
-					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
-				) 
-			);
+			$wp_customize->add_setting( 'cred_heading_5_typo', array(
+				'default'           => 'Montserrat',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
+			) );
 
-			$wp_customize->add_control( 'cred_heading_5_typo', array(
-					'type' => 'select',
-					'description' => __( 'Typography', 'credence' ),
-					'section' => 'cred_typography_section',
-					'choices' => $font_choices
-				)
-			);
+			$wp_customize->add_control( new Cred_Google_Font_Dropdown_Custom_Control( $wp_customize, 'cred_heading_5_typo', array(
+				'label'      => __( 'Typography', 'credence' ),
+				'section'    => 'cred_typography_section',
+				'settings'   => 'cred_heading_5_typo'
+			) ) );
 
 			$wp_customize->add_setting( 'cred_heading_5_font', array(
 				'default'    => '20',
@@ -514,20 +437,16 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 				)
 			);
 
-			$wp_customize->add_setting( 
-				'cred_heading_6_typo', 
-				array(
-					'sanitize_callback' => array( __CLASS__, 'cred_sanitize_fonts' )
-				) 
-			);
+			$wp_customize->add_setting( 'cred_heading_6_typo', array(
+				'default'           => 'Montserrat',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
+			) );
 
-			$wp_customize->add_control( 'cred_heading_6_typo', array(
-					'type' => 'select',
-					'description' => __( 'Typography', 'credence' ),
-					'section' => 'cred_typography_section',
-					'choices' => $font_choices
-				)
-			);
+			$wp_customize->add_control( new Cred_Google_Font_Dropdown_Custom_Control( $wp_customize, 'cred_heading_6_typo', array(
+				'label'      => __( 'Typography', 'credence' ),
+				'section'    => 'cred_typography_section',
+				'settings'   => 'cred_heading_6_typo'
+			) ) );
 
 			$wp_customize->add_setting( 'cred_heading_6_font', array(
 				'default' => '16',
@@ -1513,6 +1432,50 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 		}
 
 		/**
+		 * google fonts.
+		 */
+		public static function get_google_font_family() {
+			if ( get_transient( 'credence_google_font_list' ) ) :
+				$content = get_transient('credence_google_font_list');
+			else :
+				$googleApi = 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=AIzaSyDcAjGVgfOIeaMl5Ebppm2k65nmhKiXvu4';
+				$fontContent = wp_remote_get( $googleApi, array('sslverify'   => false) );
+				$content = json_decode($fontContent['body'], true);
+				set_transient( 'credence_google_font_list', $content, 0 );
+			endif;
+			
+			$cred_system_fonts = array(
+				'Arial', 'Arial Black', 'Courier', 'Courier New', 'Georgia', 'Helvetica', 'Times', 'Times New Roman', 'Trebuchet MS', 'Verdana'
+			);
+
+			$family[] = array();
+			foreach( $content['items'] as $fonts ) {
+				$family[] = $fonts['family'];
+			}
+
+			$all_fonts[] = array();
+			$all_fonts = array_merge( $family, $cred_system_fonts );
+		
+			return $all_fonts;
+		}
+
+		/**
+		 * Sanitize Fonts.
+		 *
+		 * @param string $input The input from the setting.
+		 * @param object $setting The selected setting.
+		 *
+		 * @return string $input|$setting->default The input from the setting or the default setting.
+		 */
+		public static function sanitize_fonts( $input, $setting ) {
+			$value = sanitize_text_field( $input );
+			$choices = Cred_Customize::get_google_font_family();
+		
+			// If the input is a valid key, return it; otherwise, return the default.
+			return ( in_array( $value, $choices ) ? $value : $setting->default );
+		}
+
+		/**
 		 * Sanitize boolean for checkbox.
 		 *
 		 * @param bool $checked Whether or not a box is checked.
@@ -1532,61 +1495,6 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 		  
 			// If the input is an absolute integer, return it; otherwise, return the default
 			return ( $number ? $number : $setting->default );
-		}
-
-		/**
-		 *  Sanitize Fonts
-		 * 
-		 */
-		public static function cred_sanitize_fonts( $input ) {
-			$valid = array(
-				'Arial Black:400,700' => 'Arial Black',
-				'Courier:400,700' => 'Courier',
-				'Courier New:400,700' => 'Courier New',
-				'Georgia:400,700' => 'Georgia',
-				'Helvetica:400,700' => 'Helvetica',
-				'Times:400,700' => 'Times',
-				'Times New Roman:400,700' => 'Times New Roman',
-				'Trebuchet MS:400,700' => 'Trebuchet MS',
-				'Verdana:400,700' => 'Verdana',
-				'Source Sans Pro:400,700,400italic,700italic' => 'Source Sans Pro',
-				'Open Sans:400italic,700italic,400,700' => 'Open Sans',
-				'Oswald:400,700' => 'Oswald',
-				'Playfair Display:400,700,400italic' => 'Playfair Display',
-				'Montserrat:400,700' => 'Montserrat',
-				'Raleway:400,700' => 'Raleway',
-				'Droid Sans:400,700' => 'Droid Sans',
-				'Lato:400,700,400italic,700italic' => 'Lato',
-				'Arvo:400,700,400italic,700italic' => 'Arvo',
-				'Lora:400,700,400italic,700italic' => 'Lora',
-				'Merriweather:400,300italic,300,400italic,700,700italic' => 'Merriweather',
-				'Oxygen:400,300,700' => 'Oxygen',
-				'PT Serif:400,700' => 'PT Serif',
-				'PT Sans:400,700,400italic,700italic' => 'PT Sans',
-				'PT Sans Narrow:400,700' => 'PT Sans Narrow',
-				'Cabin:400,700,400italic' => 'Cabin',
-				'Fjalla One:400' => 'Fjalla One',
-				'Francois One:400' => 'Francois One',
-				'Josefin Sans:400,300,600,700' => 'Josefin Sans',
-				'Libre Baskerville:400,400italic,700' => 'Libre Baskerville',
-				'Arimo:400,700,400italic,700italic' => 'Arimo',
-				'Ubuntu:400,700,400italic,700italic' => 'Ubuntu',
-				'Bitter:400,700,400italic' => 'Bitter',
-				'Droid Serif:400,700,400italic,700italic' => 'Droid Serif',
-				'Roboto:400,400italic,700,700italic' => 'Roboto',
-				'Open Sans Condensed:700,300italic,300' => 'Open Sans Condensed',
-				'Roboto Condensed:400italic,700italic,400,700' => 'Roboto Condensed',
-				'Roboto Slab:400,700' => 'Roboto Slab',
-				'Yanone Kaffeesatz:400,700' => 'Yanone Kaffeesatz',
-				'Rokkitt:400' => 'Rokkitt'
-			);
-
-			if ( array_key_exists( $input, $valid ) ) :
-				return $input;
-			else :
-				return '';
-			endif;
-		
 		}
 
 		/**
