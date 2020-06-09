@@ -146,7 +146,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			);
 
 			$wp_customize->add_setting( 'cred_header_google_font_list', array(
-				'default'           => 'Montserrat',
+				'default'           => 'Roboto',
 				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
 			) );
 
@@ -155,6 +155,59 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 				'section'    => 'cred_typography_section',
 				'settings'   => 'cred_header_google_font_list'
 			) ) );
+
+			//Body Font
+			$wp_customize->add_setting( 
+				'cred_heading_body_font', 
+				array(
+					'sanitize_callback' => 'sanitize_text_field'
+				)
+			);
+
+			$wp_customize->add_control( 
+				new Cred_Heading_Custom_Control(
+					$wp_customize, 'cred_heading_body_font',
+					array(
+						'label'      => __( 'Body Font', 'credence' ),
+						'section'    => 'cred_typography_section'
+					)
+				)
+			);
+
+			$wp_customize->add_setting( 'cred_body_font_typo', array(
+				'default'           => 'Roboto',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
+			) );
+
+			$wp_customize->add_control( new Cred_Google_Font_Dropdown_Custom_Control( $wp_customize, 'cred_body_font_typo', array(
+				'label'      => __( 'Typography', 'credence' ),
+				'section'    => 'cred_typography_section',
+				'settings'   => 'cred_body_font_typo'
+			) ) );
+
+			$wp_customize->add_setting( 'cred_body_font', array(
+				'default' => '15',
+				'capability' => 'edit_theme_options',
+				'sanitize_callback' => 'sanitize_text_field',
+				'transport' => 'refresh'
+			) );
+
+			$wp_customize->add_control(
+				new Cred_Range_Custom_Control(
+					$wp_customize,
+					'cred_body_font',
+					array(
+						'label'       => __( 'Font Size ( px )', 'credence' ),
+						'section'     => 'cred_typography_section',
+						'settings'    => 'cred_body_font',
+						'input_attrs' => array(
+							'min'  => 1,
+							'max'  => 100,
+							'step' => 1
+						)
+					)
+				)
+			);
 
 			//Heading 1
 
@@ -176,7 +229,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			);
 
 			$wp_customize->add_setting( 'cred_heading_1_typo', array(
-				'default'           => 'Montserrat',
+				'default'           => 'Roboto',
 				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
 			) );
 
@@ -230,7 +283,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			);
 
 			$wp_customize->add_setting( 'cred_heading_2_typo', array(
-				'default'           => 'Montserrat',
+				'default'           => 'Roboto',
 				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
 			) );
 
@@ -282,7 +335,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			);
 
 			$wp_customize->add_setting( 'cred_heading_3_typo', array(
-				'default'           => 'Montserrat',
+				'default'           => 'Roboto',
 				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
 			) );
 
@@ -334,7 +387,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			);
 
 			$wp_customize->add_setting( 'cred_heading_4_typo', array(
-				'default'           => 'Montserrat',
+				'default'           => 'Roboto',
 				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
 			) );
 
@@ -386,7 +439,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			);
 
 			$wp_customize->add_setting( 'cred_heading_5_typo', array(
-				'default'           => 'Montserrat',
+				'default'           => 'Roboto',
 				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
 			) );
 
@@ -438,7 +491,7 @@ if ( ! class_exists( 'Cred_Customize' ) ) :
 			);
 
 			$wp_customize->add_setting( 'cred_heading_6_typo', array(
-				'default'           => 'Montserrat',
+				'default'           => 'Roboto',
 				'sanitize_callback' => array( __CLASS__, 'sanitize_fonts' )
 			) );
 

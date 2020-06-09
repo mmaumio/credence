@@ -671,8 +671,9 @@ if ( ! function_exists( 'cred_fonts_url' ) ) :
 		$heading_4_font = get_theme_mod( 'cred_heading_4_typo', 'Roboto' );
 		$heading_5_font = get_theme_mod( 'cred_heading_5_typo', 'Roboto' );
 		$heading_6_font = get_theme_mod( 'cred_heading_6_typo', 'Roboto' );
+		$body_typo      = get_theme_mod( 'cred_body_font_typo', 'Roboto' );
 
-	    if ( 'off' !== $header_font || 'off' !== $$heading_1_font  || 'off' !== $$heading_2_font  || 'off' !== $$heading_3_font  || 'off' !== $$heading_4_font  || 'off' !== $$heading_5_font  || 'off' !== $$heading_6_font ) :
+	    if ( 'off' !== $header_font || 'off' !== $heading_1_font || 'off' !== $heading_2_font || 'off' !== $heading_3_font || 'off' !== $heading_4_font || 'off' !== $heading_5_font || 'off' !== $heading_6_font || 'off' !== $body_typo ) :
 	        $font_families = array();
 
 	        if ( 'off' !== $header_font ) :
@@ -701,6 +702,10 @@ if ( ! function_exists( 'cred_fonts_url' ) ) :
 
 	        if ( 'off' !== $heading_6_font ) :
 	            $font_families[] = $heading_6_font;
+	        endif;
+
+	        if ( 'off' !== $body_typo ) :
+	            $font_families[] = $body_typo;
 	        endif;
 
 	        $query_args = array(
@@ -749,23 +754,30 @@ function cred_customizer_style_method() {
 	$link_hover_color          = get_theme_mod( 'cred_link_hover_color', '#5d00ff' );
 	
 	//typography of heading
-	$heading_1_typo            = get_theme_mod( 'cred_heading_1_typo', 'Montserrat' );
+	$heading_1_typo            = get_theme_mod( 'cred_heading_1_typo', 'Roboto' );
 	$heading_1_font            = get_theme_mod( 'cred_heading_1_font', 42 );
 	
-	$heading_2_typo            = get_theme_mod( 'cred_heading_2_typo', 'Montserrat' );
+	$heading_2_typo            = get_theme_mod( 'cred_heading_2_typo', 'Roboto' );
 	$heading_2_font            = get_theme_mod( 'cred_heading_2_font', 36 );
 	
-	$heading_3_typo            = get_theme_mod( 'cred_heading_3_typo', 'Montserrat' );
+	$heading_3_typo            = get_theme_mod( 'cred_heading_3_typo', 'Roboto' );
 	$heading_3_font            = get_theme_mod( 'cred_heading_3_font', 30 );
 	
-	$heading_4_typo            = get_theme_mod( 'cred_heading_4_typo', 'Montserrat' );
+	$heading_4_typo            = get_theme_mod( 'cred_heading_4_typo', 'Roboto' );
 	$heading_4_font            = get_theme_mod( 'cred_heading_4_font', 24 );
 	
-	$heading_5_typo            = get_theme_mod( 'cred_heading_5_typo', 'Montserrat' );
+	$heading_5_typo            = get_theme_mod( 'cred_heading_5_typo', 'Roboto' );
 	$heading_5_font            = get_theme_mod( 'cred_heading_5_font', 20 );
 	
-	$heading_6_typo            = get_theme_mod( 'cred_heading_6_typo', 'Montserrat' );
+	$heading_6_typo            = get_theme_mod( 'cred_heading_6_typo', 'Roboto' );
 	$heading_6_font            = get_theme_mod( 'cred_heading_6_font', 16 );
+	
+	//typography of body
+	$body_typo                 = get_theme_mod( 'cred_body_font_typo', 'Roboto' );
+	$body_font                 = get_theme_mod( 'cred_body_font', 15 );
+
+	//typography of header
+	$header_font               = get_theme_mod( 'cred_header_google_font_list', 'Roboto' );
 	
 	//site width
 	$site_width                = get_theme_mod( 'cred_site_width', '1140' );
@@ -776,8 +788,6 @@ function cred_customizer_style_method() {
 	//header text color
 	$header_text               = get_theme_mod( 'cred_header_text_color', '#707070' );
 	
-	//header font
-	$header_font               = get_theme_mod( 'cred_header_google_font_list', 'Montserrat' );
 
 	//header submenu background color
 	$header_submenu_background = get_theme_mod( 'cred_header_submenu_background_color', '#000000' );
@@ -856,6 +866,9 @@ function cred_customizer_style_method() {
 	}
 	h6 {
 		font-size: '. esc_attr( $heading_6_font ) . 'px;
+	}
+	body, button, input, select, textarea, p {
+		font-size: '. esc_attr( $body_font ) . 'px;
 	}
 	#site-header,
 	.cred-enable-sticky .cred-sticky-header-enable.fixed .cred-sticky-active,
@@ -982,6 +995,13 @@ function cred_customizer_style_method() {
         	font-family: '. esc_attr( $heading_6_typo ) . ', Helvetica, sans-serif;
     	}';
 	endif;
+
+	// if ( isset( $body_typo ) && ! empty( $body_typo ) ) :
+		$custom .= '
+		body, button, input, select, textarea, p {
+        	font-family: '. esc_attr( $body_typo ) . ', Helvetica, sans-serif;
+    	}';
+	// endif;
 
 	wp_add_inline_style( 'cred-style', $custom );
 }
