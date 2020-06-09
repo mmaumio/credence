@@ -41,10 +41,17 @@ GNU General Public License for more details.
 
 Credence bundles the following third-party resources:
 
-Code from Dominik Schilling for the Breadcrumbs
+Code for the Breadcrumbs
 Copyright (c) 2012-2013 WordPress.org
+Author: Dominik Schilling
 License: GPLv2
 Source: https://github.com/ocean90/wpgrafie-theme/blob/master/classes/class-ds-wp-breadcrumb.php
+
+Code for some of the Customizer Controls
+Author: Anthony Hortin
+License: GNU General Public License v2 or later
+Source: https://github.com/maddisondesigns/customizer-custom-controls
+
 
 Code from Twenty Twenty
 Copyright (c) 2019-2020 WordPress.org
