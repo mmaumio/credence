@@ -636,14 +636,10 @@ function cred_get_customizer_color_vars() {
  */
 if ( ! function_exists( 'cred_excerpt_more' ) ) :
 	function cred_excerpt_more( $more ) {
-		$more = '';
-		if ( is_admin() ) :
-			return $more;
-		endif;
-
+		if ( is_admin() ) return $more;
 	    if ( ! is_single() ) :
 	        $more = sprintf( '<a class="cred-read-more" href="%1$s">%2$s</a>',
-	            get_permalink( get_the_ID() ),
+	            esc_url( get_permalink( get_the_ID() ) ),
 	            __( 'Read More', 'credence' )
 	        );
 	    endif;
