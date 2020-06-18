@@ -126,7 +126,7 @@ body {
 *::after {
 	box-sizing: inherit;
 	-webkit-font-smoothing: antialiased;
-	word-break: break-word;
+	word-break: normal;
 	word-wrap: break-word;
 }
 
