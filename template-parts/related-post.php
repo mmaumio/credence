@@ -20,6 +20,7 @@ if( $cred_enable_related_post && is_single() && 'post' === get_post_type() && $c
     );
 
     $my_query = new WP_Query( $args );
+    
     if( $my_query->have_posts() ) : ?>
         <div class="cred-post">
             <div class="cred-related-post-items row">
