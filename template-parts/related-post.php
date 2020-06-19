@@ -52,5 +52,3 @@ if( $cred_enable_related_post && is_single() && 'post' === get_post_type() && $c
     endif;
     wp_reset_postdata();
 endif;
-
-
