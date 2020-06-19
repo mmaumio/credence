@@ -4742,7 +4742,6 @@ body.footer-menu-added footer .footer-inner {
 
 	.footer-widgets .widget {
 		border-top: none;
-		margin-top: 5rem;
 		padding-top: 0;
 	}
 	/* FOOTER BOTTOM */
@@ -5474,7 +5473,7 @@ body.footer-menu-added footer .footer-inner {
 }
 
 .footer-inner{
-    padding: 100px 15px;
+    padding: 60px 15px;
 }
 .cred-footer-bottom-part {
 	padding: 0px 15px;
