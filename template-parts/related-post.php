@@ -12,25 +12,23 @@ $cred_post_tags = wp_get_post_tags($post->ID);
 if( $cred_enable_related_post && is_single() && 'post' === get_post_type() && $cred_post_tags ) :
     $first_tag = $cred_post_tags[0]->term_id;
 
-    $args=array(
+    $related_args = array(
         'tag__in'          => array($first_tag),
         'post__not_in'     => array($post->ID),
         'posts_per_page'   => 3,
         'ignore_sticky_posts ' => 1
     );
 
-    $query = new WP_Query( $args );
+    $cred_related_query = new WP_Query( $related_args );
 
-    if( $query->have_posts() ) : ?>
+    if( $cred_related_query->have_posts() ) : ?>
         <div class="cred-post">
             <div class="cred-related-post-items row">
                 <div class="col-lg-12">
                     <h3 class="related-post-heading"><?php _e( 'Related Posts', 'credence' ); ?></h3>
                 </div>
                 <?php
-                while( $query->have_posts() ) :
-                    $query->the_post();
-                    ?>
+                while( $cred_related_query->have_posts() ) : $cred_related_query->the_post(); ?>
                     <div class="cred-single-related-post col-lg-4">
                         <?php if( has_post_thumbnail() ) : ?>
                             <div class="cred-related-post-thumb">

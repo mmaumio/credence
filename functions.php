@@ -10,6 +10,7 @@
 
 /**
  * Table of Contents:
+ * Usage Tracker integration
  * Theme Support
  * Required Files
  * Register Styles
@@ -22,6 +23,30 @@
  * Enqueue Classic Editor Styles
  * Block Editor Settings
  */
+
+/**
+ * Initialize the tracker
+ *
+ * @return void
+ */
+function credence_appsero_init_tracker() {
+
+    if ( ! class_exists( 'Appsero\Client' ) ) {
+        require_once __DIR__ . '/vendor/appsero/src/Client.php';
+    }
+
+    $client = new Appsero\Client( '74b80636-5fd5-4e65-a526-935acc9f260e', 'Credence', __FILE__ );
+
+    // Active insights
+    $client->insights()->init();
+
+    // Active automatic updater
+	$client->updater();
+	
+}
+
+credence_appsero_init_tracker();
+
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
