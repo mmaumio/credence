@@ -1103,7 +1103,6 @@ button.toggle {
 
 body:not(.enable-search-modal) .header-titles-wrapper {
 	justify-content: flex-start;
-	padding-left: 0;
 	text-align: left;
 }
 
@@ -1839,7 +1838,6 @@ button.search-untoggle {
 	color: inherit;
 	cursor: pointer;
 }
-
 
 .search-untoggle img {
 	height: 1.5rem;
@@ -4746,11 +4744,6 @@ body.footer-menu-added footer .footer-inner {
 		border-top: none;
 		padding-top: 0;
 	}
-
-	.footer-widgets .widget:first-child {
-		margin-top: 0;
-	}
-
 	/* FOOTER BOTTOM */
 
 	#site-footer {
@@ -5621,7 +5614,7 @@ body.template-full-width #site-content {
 	    padding: 30px 15px;
 	}
 	.footer-inner {
-	    padding: 30px 0;
+	    padding: 30px 15px;
 	}
 	.cred-breadcrumb-wrapper ul li {
 		margin: 0;
@@ -5631,10 +5624,26 @@ body.template-full-width #site-content {
 		padding-left: 0px;
 		padding-right: 0px;
 	}
+	.footer-widgets .widget {
+		margin-top: 30px;
+	}
+
+	.widget .widget-title {
+	    margin: 0 0 10px;
+	}
+	.header-titles-wrapper {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
 }
 .admin-bar.cred-enable-transparent-header.cred-enable-sticky #site-header {
     top: 32px;
 }
+
+.elementor-page.admin-bar.cred-enable-transparent-header.cred-enable-sticky #site-header {
+    top: 0;
+}
+
 @media ( max-width: 774px ) {
 	.admin-bar.cred-enable-transparent-header.cred-enable-sticky #site-header {
 	    top: 46px;

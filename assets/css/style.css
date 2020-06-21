@@ -5639,6 +5639,11 @@ body.template-full-width #site-content {
 .admin-bar.cred-enable-transparent-header.cred-enable-sticky #site-header {
     top: 32px;
 }
+
+.elementor-page.admin-bar.cred-enable-transparent-header.cred-enable-sticky #site-header {
+    top: 0;
+}
+
 @media ( max-width: 774px ) {
 	.admin-bar.cred-enable-transparent-header.cred-enable-sticky #site-header {
 	    top: 46px;

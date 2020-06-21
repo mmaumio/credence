@@ -64,9 +64,7 @@ jQuery(document).ready(function($) {
 				wpAdminBarFixedHeight = $wpAdminBar.height();
 			}
 
-			$navbarFixed.css({
-				marginTop: 0,
-			}).removeClass( 'fixed' );
+			$navbarFixed.removeClass( 'fixed' );
 
 			$cred_mobile_menu.removeClass( 'cred-fixed-mobile-menu' );
 			$stickyNavbar.removeClass( 'cred-sticky-active' );
@@ -74,17 +72,9 @@ jQuery(document).ready(function($) {
 		}
 	}
 
-	var eventTimeout;
 	$(window).on('scroll resize', function () {
-		clearTimeout(eventTimeout);
-		eventTimeout = setTimeout(function () {
-			cred_set_fixed_header();
-		}, 100);
+		cred_set_fixed_header();
 	});
-
-	// Set the header immediately
-	// when the page is opened
-	cred_set_fixed_header();
     
 });
 
