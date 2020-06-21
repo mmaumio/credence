@@ -3729,9 +3729,10 @@ body.footer-menu-added footer .footer-inner {
     margin-bottom: 12px;
 }
 .cred-footer-menu ul {
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 	list-style: none;
+	display: inline;
 }
 .cred-footer-menu ul li {
 	display: inline-block;
