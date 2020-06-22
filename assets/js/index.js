@@ -3,29 +3,6 @@ jQuery(document).ready(function($) {
 
 	'use strict';
 
-	/**
-	 * Back Top Link
-	 */
-	var back_to_top_offset = 200;
-	var back_to_top_duration = 300;
-
-	$(window).on('scroll load', function() {
-		if ( $( this ).scrollTop() > back_to_top_offset ) {
-			$( '.to-the-top' ).fadeIn( 400 );
-		} else {
-			$( '.to-the-top' ).fadeOut( 400 );
-		}
-	});
-
-	$( '.to-the-top' ).on( 'click', function() {
-		event.preventDefault();
-		$( 'html, body' ).animate( {
-			scrollTop: 0
-		}, back_to_top_duration );
-		return false;
-	} )
-	
-
 	var $navbarFixed = $( '.cred-sticky-header-enable' );
 	var $stickyNavbar = $( '.cred-main-header-bar-with-sticky' );
 	var $cred_mobile_menu = $( '.cred-mobile-menu-wrapper' );
@@ -72,9 +49,28 @@ jQuery(document).ready(function($) {
 		}
 	}
 
-	$(window).on('scroll resize', function () {
+	/**
+	 * Back Top Link
+	 */
+	var back_to_top_offset = 200;
+	var back_to_top_duration = 300;
+
+	$(window).on('scroll resize load', function () {
+		if ( $( this ).scrollTop() > back_to_top_offset ) {
+			$( '.to-the-top' ).fadeIn( 400 );
+		} else {
+			$( '.to-the-top' ).fadeOut( 400 );
+		}
 		cred_set_fixed_header();
 	});
+
+	$( '.to-the-top' ).on( 'click', function() {
+		event.preventDefault();
+		$( 'html, body' ).animate( {
+			scrollTop: 0
+		}, back_to_top_duration );
+		return false;
+	} );
     
 });
 
