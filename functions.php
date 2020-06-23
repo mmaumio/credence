@@ -35,7 +35,7 @@ function credence_appsero_init_tracker() {
         require_once __DIR__ . '/vendor/appsero/src/Client.php';
     }
 
-    $client = new Appsero\Client( '74b80636-5fd5-4e65-a526-935acc9f260e', 'Credence', __FILE__ );
+    $client = new Appsero\Client( '471196fb-7920-4e1a-af9d-ffd71ec80133', 'Credence', __FILE__ );
 
     // Active insights
     $client->insights()->init();
