@@ -1218,6 +1218,7 @@ body:not(.enable-search-modal) .site-logo img {
 	display: block;
 	position: relative;
 	z-index: 1;
+	outline: 0;
 }
 
 .header-inner .toggle 
@@ -5201,6 +5202,7 @@ body.footer-menu-added footer .footer-inner {
 
 	.header-toggles .toggle {
 		padding: 0 0 0 4rem;
+		outline: 0;
 	}
 
 	/* Menu Modal ---------------------------- */
