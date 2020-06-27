@@ -49,14 +49,17 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
             }
         
             public function get_google_fonts() {
-                if ( get_transient( 'credence_google_font_list' ) ) :
+                if ( get_transient( 'credence_google_font_list' ) ) {
                     $content = get_transient('credence_google_font_list');
-                else :
-                    $googleApi = 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=AIzaSyDcAjGVgfOIeaMl5Ebppm2k65nmhKiXvu4';
-                    $fontContent = wp_remote_get( $googleApi, array('sslverify'   => false) );
-                    $content = json_decode($fontContent['body'], true);
+                } else {
+                    $google_api = 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=AIzaSyAg60VUnX6Gf9gj9srnSXc5Lvp437S9wFI';
+                    $api_request = wp_remote_get( $google_api );
+                    if( is_wp_error( $api_request ) ) {
+                        return false;
+                    }
+                    $content = json_decode( $api_request['body'], true);
                     set_transient( 'credence_google_font_list', $content, 0 );
-                endif;
+                }
 
                 return $content['items'];
             }
