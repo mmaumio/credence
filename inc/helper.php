@@ -197,7 +197,7 @@ function cred_page_custom_options(){
  */
 add_action( 'save_post', 'cred_save_post_and_page_details' );
 
-function cred_save_post_and_page_details() {
+function cred_save_post_and_page_details( $post_id ) {
   	global $post;
 
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) :
@@ -227,13 +227,13 @@ function cred_save_post_and_page_details() {
 	if( isset( $_POST['cred_disable_title_status'] ) ) :
 	    update_post_meta( $post->ID, 'cred_disable_title_status', cred_sanitize_checkbox( $_POST['cred_disable_title_status'] ) );
 	else :
-	    delete_post_meta( $post->ID, 'cred_disable_title_status' );
+		delete_post_meta( $post_id, 'cred_disable_title_status' );
 	endif;
 
 	if( isset( $_POST['cred_disable_featured_image_status'] ) ) :
 	    update_post_meta( $post->ID, 'cred_disable_featured_image_status', cred_sanitize_checkbox( $_POST['cred_disable_featured_image_status'] ) );
 	else :
-	    delete_post_meta( $post->ID, 'cred_disable_featured_image_status' );
+		delete_post_meta( $post_id, 'cred_disable_featured_image_status' );
 	endif;
 }
 
