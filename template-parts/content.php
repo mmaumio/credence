@@ -27,11 +27,11 @@
 		<div class="entry-content">
 
 			<?php
-			if ( is_search() || ! is_singular() && 'summary' === get_theme_mod( 'cred_blog_content', 'summary' ) ) :
+			if ( is_search() || is_archive() || is_home() && 'summary' === get_theme_mod( 'cred_blog_content', 'summary' ) ) {
 				the_excerpt();
-			else :
+			} else {
 				the_content( __( 'Continue reading', 'credence' ) );
-			endif;
+			}
 			?>
 
 		</div><!-- .entry-content -->

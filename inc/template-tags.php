@@ -250,7 +250,7 @@ if ( ! function_exists( 'cred_get_post_meta' ) ) :
 		 *
 		 * @param array Array of post types
 		 */
-		$disallowed_post_types = apply_filters( 'cred_disallowed_post_types_for_meta_output', array( 'page' ) );
+		$disallowed_post_types = apply_filters( 'cred_disallowed_post_types_for_meta_output', array( 'page', 'product' ) );
 		// Check whether the post type is allowed to output post meta.
 		if ( in_array( get_post_type( $post_id ), $disallowed_post_types, true ) ) :
 			return;
