@@ -196,6 +196,9 @@ require get_template_directory() . '/classes/alignment-custom-control.php';
 // helper file
 require get_template_directory() . '/inc/helper.php';
 
+// tgm activation file
+require get_template_directory(). '/inc/plugin-activation.php';
+
 /**
  * Register and Enqueue Styles.
  */
