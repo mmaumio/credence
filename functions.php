@@ -41,7 +41,7 @@ function credence_appsero_init_tracker() {
     $client->insights()->init();
 
     // Active automatic updater
-	$client->updater();
+	//$client->updater();
 	
 }
 
@@ -196,8 +196,40 @@ require get_template_directory() . '/classes/alignment-custom-control.php';
 // helper file
 require get_template_directory() . '/inc/helper.php';
 
-// tgm activation file
-require get_template_directory(). '/inc/plugin-activation.php';
+// TGMPA activation file
+require_once get_template_directory() . '/vendor/tgmpa/class-tgm-plugin-activation.php';
+
+/**
+ * TGMPA plugin activation configuration
+ * 
+ */
+function cred_register_required_plugins() {
+	
+	$plugins = array(
+		array(
+			'name'     => 'Exclusive Addons Elementor',
+			'slug'     => 'exclusive-addons-for-elementor',
+			'required' => false
+		)
+	);
+
+	$config = array(
+		'id'           => 'tgmpa',
+		'default_path' => '',
+		'menu'         => 'tgmpa-install-plugins',
+		'parent_slug'  => 'themes.php',
+		'capability'   => 'edit_theme_options',
+		'has_notices'  => true,
+		'dismissable'  => true,
+		'dismiss_msg'  => '',
+		'is_automatic' => false,
+		'message'      => '',
+	);
+
+	tgmpa( $plugins, $config );
+}
+add_action( 'tgmpa_register', 'cred_register_required_plugins' );
+
 
 /**
  * Register and Enqueue Styles.
