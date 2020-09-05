@@ -3,7 +3,7 @@ Contributors: devscred
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: custom-menu, custom-logo, featured-images, full-width-template, one-column, two-columns, left-sidebar, right-sidebar, e-commerce, custom-colors, editor-style, post-formats, rtl-language-support, theme-options, translation-ready, blog
-Tested up to: 5.4.2
+Tested up to: 5.5.1
 Requires PHP: 5.6
 
 A clean, lightweight and minimal WordPress theme for versatile use across every niche you can think.
