@@ -207,6 +207,11 @@ function cred_register_required_plugins() {
 			'name'     => 'Exclusive Addons Elementor',
 			'slug'     => 'exclusive-addons-for-elementor',
 			'required' => false
+		),
+		array(
+			'name'     => 'Getwid',
+			'slug'     => 'getwid',
+			'required' => false
 		)
 	);
 
