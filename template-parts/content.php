@@ -51,8 +51,9 @@
 
 		edit_post_link();
 
-		// Single bottom post meta.
-		cred_post_meta( get_the_ID(), 'single-bottom' );
+		if ( get_post_type( get_the_ID() ) === 'post' ) {
+			cred_post_meta( get_the_ID(), 'single-bottom' );
+		}
 
 		if ( is_single() ) :
 			get_template_part( 'template-parts/navigation' );

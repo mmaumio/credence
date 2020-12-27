@@ -60,8 +60,9 @@ endif;
 				$intro_text_width = ' thin';
 			endif;
 
-			// Default to displaying the post meta.
-			cred_post_meta( get_the_ID(), 'single-top' );
+			if ( get_post_type( get_the_ID() ) === 'post' ) {
+				cred_post_meta( get_the_ID(), 'single-top' );
+			}
 
 			do_action( 'cred_after_entry_header' );
 		?>
