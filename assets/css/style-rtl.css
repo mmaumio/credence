@@ -801,6 +801,7 @@ input[type="reset"]:hover,
 input[type="submit"]:focus,
 input[type="submit"]:hover {
 	text-decoration: none;
+	outline: none;
 }
 
 input[type="text"]:focus,
@@ -819,6 +820,7 @@ input[type="datetime-local"]:focus,
 input[type="color"]:focus,
 textarea:focus {
 	border-color: currentColor;
+	outline: none;
 }
 
 /* Tables ------------------------------------ */
@@ -944,6 +946,7 @@ th {
 button.toggle {
 	background: none;
 	border: none;
+	outline: none;
 	box-shadow: none;
 	border-radius: 0;
 	font-size: inherit;
